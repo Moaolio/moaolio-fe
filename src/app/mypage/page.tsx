@@ -1,6 +1,7 @@
 'use client'
 import React, { ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/page.module.scss'
+import { FaUser } from 'react-icons/fa6'
 
 const Page = () => {
   //미리보기
@@ -29,9 +30,13 @@ const Page = () => {
   return (
     <div>
       <div className={styles.profileImageContainer}>
-        <div
-          className={styles.profileImage}
-          style={{ backgroundImage: `url(${previewImage})` }}></div>
+        {previewImage ? (
+          <div
+            className={styles.profileImage}
+            style={{ backgroundImage: `url(${previewImage})` }}></div>
+        ) : (
+          <FaUser size={100} />
+        )}
         <div className={styles.profileImageBtn}>
           <label
             htmlFor="imageInput"

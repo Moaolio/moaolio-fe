@@ -1,7 +1,16 @@
+import Header from './layout/Header/Header'
+
 export default function Home() {
   return (
     <div>
-      <h2>포트폴리오 공유 서비스입니다.</h2>
+      <section
+        style={{
+          height: '550px',
+          background: 'linear-gradient(60deg, #fffeff 20%, #e2eff4)'
+        }}>
+        <Header />
+        <div></div>
+      </section>
     </div>
   )
 }

@@ -1,0 +1,22 @@
+@mixin flexLayout(
+  $direction: row,
+  $justifyContent: center,
+  $alignItems: center
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+@mixin common-input-styles($size: 14px, $weight: 400, $lineheight: 16px) {
+  border: none;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineheight;
+  font-family: 'Raleway', sans-serif;
+
+  &:focus {
+    outline: none;
+  }
+}

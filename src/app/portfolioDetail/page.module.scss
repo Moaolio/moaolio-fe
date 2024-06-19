@@ -1,0 +1,70 @@
+.portfolioDetailContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+  .portfolioDetailImage {
+    background-color: rgb(194, 194, 194);
+    width: 600px;
+    height: 800px;
+    margin-right: 100px;
+  }
+  .portfolioCommentBox {
+    background-color: rgb(194, 194, 194);
+    width: 600px;
+    height: 800px;
+    .userName {
+      background-color: rgb(207, 187, 187);
+      width: 600px;
+      height: 80px;
+    }
+    .portfolioDetail {
+      background-color: rgb(236, 236, 209);
+      width: 600px;
+      height: 80px;
+    }
+    .portfolioLike {
+      background-color: rgb(207, 187, 187);
+      width: 600px;
+      height: 60px;
+    }
+    .techStack {
+      background-color: rgb(236, 236, 209);
+      width: 600px;
+      height: 80px;
+    }
+    .commentContainer {
+      background-color: rgb(181, 206, 180);
+      width: 600px;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      .commentBox {
+        display: flex;
+        background-color: rgb(236, 209, 231);
+        width: 550px;
+        height: 80px;
+        .commentProfileImage {
+          width: 50px;
+          height: 50px;
+          background-color: rgb(178, 202, 247);
+        }
+        .comment {
+          width: 450px;
+          height: 50px;
+          background-color: rgb(255, 255, 255);
+        }
+        .commentReport {
+          width: 50px;
+          height: 50px;
+          background-color: rgb(255, 132, 60);
+        }
+      }
+      .writeCommentBox {
+        .writeComment {
+        }
+        .postButton {
+        }
+      }
+    }
+  }
+}

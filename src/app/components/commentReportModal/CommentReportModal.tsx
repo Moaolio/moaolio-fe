@@ -3,10 +3,10 @@ import React from 'react'
 import styles from '@/app/components/commentReportModal/CommentReportModal.module.scss'
 
 interface reportModalProps {
-  onReport: () => void
+  onClose: () => void
 }
 
-const CommentReportModal: React.FC<reportModalProps> = ({ onReport }) => {
+const CommentReportModal: React.FC<reportModalProps> = ({ onClose }) => {
   return (
     <div className={styles.reportBox}>
       <div className={styles.reportTitle}>
@@ -15,12 +15,20 @@ const CommentReportModal: React.FC<reportModalProps> = ({ onReport }) => {
           신속한 제재를 위해 정확한 사유를 입력해주시기 바랍니다.
         </p>
       </div>
-      <div className={styles.reportContent}></div>
-      <button
-        className={styles.reportButton}
-        onClick={onReport}>
-        신고하기
-      </button>
+      <div className={styles.reportContentBox}>
+        <input
+          className={styles.reportContent}
+          type="text"
+        />
+      </div>
+      <div className={styles.reportButtonBox}>
+        <button
+          className={styles.reportButton}
+          onClick={onClose}>
+          신고하기
+        </button>
+        {/* 나중에 span 버튼으로 변경 */}
+      </div>
     </div>
   )
 }

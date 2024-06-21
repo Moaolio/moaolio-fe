@@ -1,15 +1,31 @@
-.modalBox {
+.reportBox {
   background-color: white;
-  width: 150px;
-  height: 150px;
+  width: 550px;
+  height: 400px;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 40;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .reportTitle {
+    .reportRecomfirm {
+    }
+    .reportButton {
+    }
+  }
+  .reportContentBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reportContent {
+      background-color: azure;
+      width: 400px;
+      height: 300px;
+    }
+  }
+  .reportButtonBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reportButton {
+    }
+  }
 }

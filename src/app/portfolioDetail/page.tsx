@@ -2,6 +2,7 @@
 import React from 'react'
 import styles from '@/app/portfolioDetail/page.module.scss'
 import PortfolioComment from '@/app/components/portfolioComment/PortfolioComment'
+import TextArea from '@/app/components/TextArea'
 
 const Page = () => {
   return (
@@ -14,10 +15,10 @@ const Page = () => {
         <div className={styles.techStack}></div>
         <div className={styles.commentContainer}>
           <PortfolioComment />
-          <div className={styles.writeCommentBox}>
-            <div className={styles.writeComment}></div>
-            <div className={styles.postButton}></div>
-          </div>
+        </div>
+        <div className={styles.writeCommentBox}>
+          <TextArea name="content" />
+          <div className={styles.postButton}></div>
         </div>
       </div>
     </div>

@@ -11,15 +11,12 @@ const CommentReportModal: React.FC<reportModalProps> = ({ onClose }) => {
     <div className={styles.reportBox}>
       <div className={styles.reportTitle}>
         <p className={styles.reportRecomfirm}>이 댓글을 신고하시겠습니까?</p>
-        <p className={styles.reportButton}>
+        <p className={styles.reportText}>
           신속한 제재를 위해 정확한 사유를 입력해주시기 바랍니다.
         </p>
       </div>
       <div className={styles.reportContentBox}>
-        <input
-          className={styles.reportContent}
-          type="text"
-        />
+        <textarea className={styles.reportContent} />
       </div>
       <div className={styles.reportButtonBox}>
         <button

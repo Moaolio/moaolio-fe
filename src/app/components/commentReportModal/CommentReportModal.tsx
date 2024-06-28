@@ -1,14 +1,20 @@
 'use client'
 import React from 'react'
 import styles from '@/app/components/commentReportModal/CommentReportModal.module.scss'
-
+import { useOnClickOutside } from '@modern-kit/react'
 interface reportModalProps {
   onClose: () => void
 }
 
 const CommentReportModal: React.FC<reportModalProps> = ({ onClose }) => {
+  const { ref } = useOnClickOutside<HTMLDivElement>(() => {
+    onClose()
+  })
+
   return (
-    <div className={styles.reportBox}>
+    <div
+      className={styles.reportBox}
+      ref={ref}>
       <div className={styles.reportTitle}>
         <p className={styles.reportRecomfirm}>이 댓글을 신고하시겠습니까?</p>
         <p className={styles.reportText}>
@@ -24,7 +30,6 @@ const CommentReportModal: React.FC<reportModalProps> = ({ onClose }) => {
           onClick={onClose}>
           신고하기
         </button>
-        {/* 나중에 span 버튼으로 변경 */}
       </div>
     </div>
   )

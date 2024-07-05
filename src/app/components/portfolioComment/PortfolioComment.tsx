@@ -25,7 +25,7 @@ const PortfolioComment = () => {
           onClick={handleReportModal}>
           <MdOutlineReport />
         </div>
-        {isModalOpen && <CommentReportModal onClose={handleCloseModal} />}
+        {isModalOpen ? <CommentReportModal onClose={handleCloseModal} /> : null}
       </div>
     </div>
   )

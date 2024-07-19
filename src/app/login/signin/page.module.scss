@@ -1,53 +1,243 @@
-.mainContainer {
+.parentContainer {
+  position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
   display: flex;
   justify-content: center;
+  align-items: center;
 
-  .loginTitleBox {
-    width: 410px;
-    height: 62px;
+  .backgroundContainer {
+    z-index: -1;
+    position: absolute;
+    width: 1350px;
+    height: 1008px;
+    flex-shrink: 0;
+    border-radius: 1350px;
+    background: radial-gradient(
+      46.83% 46.83% at 50% 55.06%,
+      rgba(96, 183, 205, 0.5) 0.48%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    //추가한부분
+    // left: 50%;
+    // top: 50%;
+    // transform: translateX(-50%) translateY(-400px);
+  }
+
+  .mainContainer {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 1024px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 108px;
-    .loginTitle {
-      width: 403px;
-      height: 36px;
-      font-size: 30px;
-      text-align: center;
-    }
-    .welcomeText {
-      width: 302px;
-      height: 16px;
-      font-size: 13px;
-      text-align: center;
-      white-space: nowrap;
-      margin-top: 10px;
-    }
-  }
-  .inputContainer {
-    .googleSignInButton {
-    }
-    .underline {
-    }
-    .loginInput {
-    }
-    .passwordInput {
-    }
-    .checkContainer {
-      .checkBox {
+
+    .loginTitleBox {
+      width: 410px;
+      height: 62px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 108px;
+
+      .loginTitle {
+        width: 403px;
+        height: 36px;
+        text-align: center;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
       }
-      .forgotPassword {
+
+      .welcomeText {
+        width: 302px;
+        height: 16px;
+        text-align: center;
+        white-space: nowrap;
+        margin-top: 10px;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
       }
     }
-    .signIn {
-    }
-    .signUpBox {
-      .signUpText {
+
+    .inputContainer {
+      width: 553px;
+      height: 570px;
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.06);
+      background-color: #fff;
+      .googleSignInButton {
+        background-color: #ecedef;
+        border-radius: 7px;
+        margin-top: 43px;
+        width: 479px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 52px;
+        cursor: pointer;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
       }
-      .signUp {
+
+      .loginInputId {
+        margin-top: 52px;
+        width: 479px;
+        height: 58px;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .idInput {
+          font-size: 15px;
+          color: #000000;
+          border: none;
+          outline: none;
+          padding-left: 19px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          box-sizing: border-box;
+
+          &::placeholder {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #c1c1c1;
+          }
+        }
+      }
+
+      .loginInputPassword {
+        margin-top: 12px;
+        width: 479px;
+        height: 58px;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .passwordInput {
+          font-size: 15px;
+          color: #000000;
+          border: none;
+          outline: none;
+          padding-left: 19px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          box-sizing: border-box;
+
+          &::placeholder {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #c1c1c1;
+          }
+        }
+      }
+
+      .checkContainer {
+        margin-top: 25px;
+        width: 479px;
+        height: 14px;
+        display: flex;
+        align-items: center;
+
+        .checkBox {
+        }
+
+        .checkLabel {
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-left: 5px;
+        }
+
+        .forgotPassword {
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-decoration-line: underline;
+          cursor: pointer;
+
+          margin-left: 154px;
+        }
+      }
+      .signIn {
+        border-radius: 7px;
+        background: #60b7cd;
+        margin-top: 37px;
+        width: 479px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      .signUpBox {
+        width: 479px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 35px;
+        .signUpText {
+          cursor: pointer;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: #4d4d4d;
+          margin-right: 12px;
+        }
+
+        .signUp {
+          cursor: pointer;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          color: #2691ac;
+        }
       }
     }
   }

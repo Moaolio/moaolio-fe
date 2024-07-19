@@ -1,0 +1,14 @@
+@import 'utils';
+
+.inputStyle {
+  flex: 1;
+  @include common-input-styles;
+}
+
+.textareaStyle {
+  width: 100%;
+  resize: none;
+  overflow: hidden;
+  margin-bottom: 50px;
+  @include common-input-styles(12px);
+}

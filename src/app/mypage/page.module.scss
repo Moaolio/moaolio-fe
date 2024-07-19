@@ -1,47 +1,103 @@
-.profileImageContainer {
-  background-color: rgb(255, 248, 152);
-  width: 120px;
-  height: 160px;
+.profilePage {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
 
-  .profileImage {
+  .profileImageContainer {
     background-color: rgb(255, 255, 255);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 10px;
-    background-size: cover; /* 이미지 크기 조정 */
-    background-position: center; /* 이미지 중앙에 위치 */
+    width: 300px;
+    height: 400px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-  }
+    padding-top: 10px;
 
-  .profileImageBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    .profileImageSelect {
-      background-color: rgb(205, 228, 248);
-      width: 50px;
-      height: 30px;
-      cursor: pointer;
+    .profileImage {
+      background-color: rgb(255, 255, 255);
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
-    .profileImageSave {
-      background-color: aliceblue;
-      width: 50px;
-      height: 30px;
-      cursor: pointer;
+
+    .profileImageBtn {
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
+      margin-top: 10px;
+
+      .profileImageSelect {
+        background-color: rgb(255, 255, 255);
+        width: 50px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .profileImageSave {
+        background-color: rgb(255, 255, 255);
+        width: 50px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .profileImageCancel {
+        cursor: pointer;
+      }
+    }
+  }
+  .profileInfo {
+    width: 800px;
+    min-height: 1000px;
+    height: auto;
+    border: 1px solid rgb(134, 134, 134);
+    padding: 10px;
+    display: flex;
+
+    .profileEdit {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: right;
+      flex-direction: column;
+
+      .textareaStyle {
+        width: 500px;
+        height: 500px;
+        resize: none;
+        color: rgb(121, 121, 121);
+      }
+      .inputStyle {
+        color: rgb(121, 121, 121);
+        font-size: 15px;
+        margin-bottom: 2px;
+      }
+      .editButton {
+        margin-top: 10px;
+        cursor: pointer;
+      }
+    }
+    .profileName {
+    }
+    .techStack {
+    }
+    .career {
+    }
+    .email {
+    }
+    .introduction {
+      border: solid 1px black;
+      width: 500px;
+      height: 500px;
     }
   }
 }

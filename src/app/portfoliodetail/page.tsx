@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import styles from '@/app/portfolioDetail/page.module.scss'
+import styles from '@/app/portfoliodetail/page.module.scss'
 import PortfolioComment from '@/app/components/portfolioComment/PortfolioComment'
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import TextInput from '@/app/components/TextInput'
 
 interface FormValues {

@@ -1,14 +1,14 @@
 'use client'
 import React from 'react'
+import GoogleIcon from '../../../assets/icons/GoogleIcon'
+import Stroke from '../../../assets/icons/Stroke'
 import styles from '@/app/login/signin/page.module.scss'
-import GoogleIcon from '../../../../public/svg/GoogleIcon'
-import Stroke from '../../../../public/svg/Stroke'
-import LoginPageArrow from '../../../../public/svg/LoginPageArrow'
+import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
+
 const Page = () => {
   return (
     <div className={styles.parentContainer}>
-      <LoginPageArrow />
-      <div className={styles.backgroundContainer}></div>
+      <LoginBackgroundImage />
       <div className={styles.mainContainer}>
         <div className={styles.loginTitleBox}>
           <div className={styles.loginTitle}>Sign in</div>

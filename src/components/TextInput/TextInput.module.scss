@@ -1,0 +1,6 @@
+@import 'utils';
+
+.inputStyle {
+  flex: 1;
+  @include common-input-styles;
+}

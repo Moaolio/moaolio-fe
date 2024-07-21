@@ -1,5 +1,5 @@
 import { RegisterOptions, useFormContext } from 'react-hook-form'
-import styles from './style.module.scss'
+import styles from './TextArea.module.scss'
 import { FormEventHandler } from 'react'
 
 interface TextAreaProps {

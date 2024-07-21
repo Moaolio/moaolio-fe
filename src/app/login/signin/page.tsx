@@ -1,14 +1,15 @@
 'use client'
 import React from 'react'
+import GoogleIcon from '../../../assets/icons/GoogleIcon'
+import Stroke from '../../../assets/icons/Stroke'
 import styles from '@/app/login/signin/page.module.scss'
-import GoogleIcon from '../../../../public/svg/GoogleIcon'
-import Stroke from '../../../../public/svg/Stroke'
-import LoginPageArrow from '../../../../public/svg/LoginPageArrow'
+import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
+import Link from 'next/link'
+
 const Page = () => {
   return (
     <div className={styles.parentContainer}>
-      <LoginPageArrow />
-      <div className={styles.backgroundContainer}></div>
+      <LoginBackgroundImage />
       <div className={styles.mainContainer}>
         <div className={styles.loginTitleBox}>
           <div className={styles.loginTitle}>Sign in</div>
@@ -52,7 +53,11 @@ const Page = () => {
             <label className={styles.signUpText}>
               등록된 계정이 없으신가요?
             </label>
-            <label className={styles.signUp}>Sign up</label>
+            <Link
+              href="/login/signup1"
+              className={styles.signUp}>
+              Sign up
+            </Link>
           </div>
         </div>
       </div>

@@ -4,5 +4,237 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+
+  .mainContainer {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 1440px;
+    max-height: 1024px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .loginTitleBox {
+      width: 410px;
+      height: 62px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 108px;
+
+      .loginTitle {
+        width: 403px;
+        height: 36px;
+        text-align: center;
+        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .welcomeText {
+        width: 302px;
+        height: 16px;
+        text-align: center;
+        white-space: nowrap;
+        margin-top: 10px;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+
+    .inputContainer {
+      width: 553px;
+      height: 570px;
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 20px;
+      box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.06);
+      background-color: #fff;
+      padding-top: 10px;
+
+      .idTextBox {
+        width: 479px;
+        display: flex;
+        padding-top: 28px;
+
+        .textLabel {
+          color: #4d4d4d;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: left;
+        }
+      }
+
+      .loginInputId {
+        margin-top: 10px;
+        width: 479px;
+        height: 58px;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .idInput {
+          font-size: 15px;
+          color: #000000;
+          border: none;
+          outline: none;
+          padding-left: 19px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          box-sizing: border-box;
+
+          &::placeholder {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #c1c1c1;
+          }
+        }
+        .checkId {
+          color: #60b7cd;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          white-space: nowrap;
+          margin-right: 20px;
+        }
+      }
+
+      .loginInputPassword {
+        margin-top: 12px;
+        width: 479px;
+        height: 58px;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-bottom: 1px;
+        .passwordInput {
+          font-size: 15px;
+          color: #000000;
+          border: none;
+          outline: none;
+          padding-left: 19px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          box-sizing: border-box;
+
+          &::placeholder {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #c1c1c1;
+          }
+        }
+      }
+
+      .checkPassword {
+        margin-top: 6px;
+        width: 479px;
+        height: 58px;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+
+        .checkPasswordInput {
+          font-size: 15px;
+          color: #000000;
+          border: none;
+          outline: none;
+          padding-left: 19px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          line-height: 1;
+          box-sizing: border-box;
+
+          &::placeholder {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            color: #c1c1c1;
+          }
+        }
+      }
+
+      .next {
+        border-radius: 7px;
+        background: #60b7cd;
+        margin-top: 55px;
+        width: 479px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      .signInBox {
+        width: 479px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 35px;
+
+        .signInText {
+          cursor: pointer;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: #4d4d4d;
+          margin-right: 15px;
+        }
+
+        .signIn {
+          cursor: pointer;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          color: #2691ac;
+        }
+      }
+    }
+  }
 }

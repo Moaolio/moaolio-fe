@@ -4,7 +4,6 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
 
   .mainContainer {
     z-index: 0;
@@ -218,6 +217,7 @@
           font-weight: 600;
           line-height: normal;
           color: #2691ac;
+          text-decoration: none;
         }
       }
     }

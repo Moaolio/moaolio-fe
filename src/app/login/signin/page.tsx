@@ -4,6 +4,7 @@ import GoogleIcon from '../../../assets/icons/GoogleIcon'
 import Stroke from '../../../assets/icons/Stroke'
 import styles from '@/app/login/signin/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
+import Link from 'next/link'
 
 const Page = () => {
   return (
@@ -52,7 +53,11 @@ const Page = () => {
             <label className={styles.signUpText}>
               등록된 계정이 없으신가요?
             </label>
-            <label className={styles.signUp}>Sign up</label>
+            <Link
+              href="/login/signup1"
+              className={styles.signUp}>
+              Sign up
+            </Link>
           </div>
         </div>
       </div>

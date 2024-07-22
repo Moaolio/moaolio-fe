@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import styles from '@/app/login/signup1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
+import styles from '@/app/login/signup2/page.module.scss'
 
 const Page = () => {
   return (
@@ -17,39 +17,48 @@ const Page = () => {
         </div>
         <div className={styles.inputContainer}>
           <div className={styles.idTextBox}>
-            <label className={styles.textLabel}>아이디</label>
+            <label className={styles.textLabel}>이메일</label>
           </div>
           <div className={styles.loginInputId}>
             <input
               className={styles.idInput}
-              placeholder="아이디를 입력해주세요."
+              placeholder="이메일을 입력해주세요."
             />
-            <label className={styles.checkId}>중복확인</label>
+            <label className={styles.sendEmail}>인증번호 전송</label>
           </div>
           <div className={styles.idTextBox}>
-            <label className={styles.textLabel}>비밀번호</label>
+            <label className={styles.textLabel}>이메일 인증번호 입력</label>
           </div>
           <div className={styles.loginInputPassword}>
             <input
               className={styles.passwordInput}
-              type="password"
-              placeholder="비밀번호를 입력해주세요."
+              placeholder="인증번호 6자리를 입력해주세요."
             />
+            <label className={styles.checkNumber}>확인</label>
           </div>
           <div className={styles.idTextBox}>
-            <label className={styles.textLabel}>비밀번호 확인</label>
+            <label className={styles.textLabel1}>이름</label>
+            <label className={styles.textLabel2}>닉네임</label>
           </div>
-          <div className={styles.checkPassword}>
-            <input
-              className={styles.checkPasswordInput}
-              placeholder="비밀번호를 확인해주세요.."
-            />
+          <div className={styles.nameNicknameBox}>
+            <div className={styles.nameInputDiv}>
+              <input
+                className={styles.nameInput}
+                placeholder="이름을입력해주세요."
+              />
+            </div>
+            <div className={styles.nickNameInputDiv}>
+              <input
+                className={styles.nickNameInput}
+                placeholder="닉네임을 입력해주세요."
+              />
+            </div>
           </div>
 
           <Link
-            href="/login/signup2"
+            href="/login/signup3"
             className={styles.next}>
-            다음(1/3)
+            다음(2/3)
           </Link>
           <div className={styles.signInBox}>
             <label className={styles.signInText}>이미 계정이 있으신가요?</label>

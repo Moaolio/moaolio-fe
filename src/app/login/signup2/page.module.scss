@@ -62,15 +62,24 @@
       .idTextBox {
         width: 479px;
         display: flex;
-        padding-top: 28px;
+        padding-top: 26px;
 
-        .textLabel {
+        .textLabel1 {
           color: #4d4d4d;
           font-size: 15px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
           text-align: left;
+        }
+        .textLabel2 {
+          color: #4d4d4d;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-align: left;
+          margin-left: 219px;
         }
       }
 
@@ -108,7 +117,7 @@
             color: #c1c1c1;
           }
         }
-        .checkId {
+        .sendEmail {
           color: #60b7cd;
           font-size: 15px;
           font-style: normal;
@@ -154,40 +163,88 @@
             color: #c1c1c1;
           }
         }
-      }
-
-      .checkPassword {
-        margin-top: 6px;
-        width: 479px;
-        height: 58px;
-        border-radius: 10px;
-        border: 1px solid #dbdbdb;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-
-        .checkPasswordInput {
+        .checkNumber {
+          color: #60b7cd;
           font-size: 15px;
-          color: #000000;
-          border: none;
-          outline: none;
-          padding-left: 19px;
-          width: 100%;
-          height: 100%;
+          font-style: normal;
+          font-weight: 600;
+          line-height: normal;
+          white-space: nowrap;
+          margin-right: 20px;
+          cursor: pointer;
+        }
+      }
+      .nameNicknameBox {
+        display: flex;
+        .nameInputDiv {
+          margin-top: 6px;
+          width: 234px;
+          height: 58px;
+          border-radius: 10px;
+          border: 1px solid #dbdbdb;
+          background: #fff;
           display: flex;
           align-items: center;
-          line-height: 1;
-          box-sizing: border-box;
+          overflow: hidden;
 
-          &::placeholder {
+          .nameInput {
+            font-size: 15px;
+            color: #000000;
+            border: none;
+            outline: none;
+            padding-left: 19px;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
+            line-height: 1;
+            box-sizing: border-box;
+
+            &::placeholder {
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              color: #c1c1c1;
+            }
+          }
+        }
+        .nickNameInputDiv {
+          margin-top: 6px;
+          width: 234px;
+          height: 58px;
+          border-radius: 10px;
+          border: 1px solid #dbdbdb;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          margin-left: 11px;
+
+          .nickNameInput {
             font-size: 15px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: #c1c1c1;
+            color: #000000;
+            border: none;
+            outline: none;
+            padding-left: 19px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+            box-sizing: border-box;
+
+            &::placeholder {
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              color: #c1c1c1;
+            }
           }
         }
       }
@@ -219,6 +276,7 @@
         margin-top: 35px;
 
         .signInText {
+          cursor: pointer;
           font-size: 13px;
           font-style: normal;
           font-weight: 500;

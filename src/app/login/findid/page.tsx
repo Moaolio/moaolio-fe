@@ -1,33 +1,31 @@
 'use client'
-import React, { useState } from 'react'
-import GoogleIcon from '../../../assets/icons/GoogleIcon'
+import React from 'react'
 import Stroke from '../../../assets/icons/Stroke'
-import styles from '@/app/login/signin/page.module.scss'
+import styles from '@/app/login/findid/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 
 const Page = () => {
-  const [saveId, setSaveId] = useState(false)
   return (
     <div className={styles.parentContainer}>
       <LoginBackgroundImage />
       <div className={styles.mainContainer}>
         <div className={styles.loginTitleBox}>
-          <div className={styles.loginTitle}>Sign in</div>
+          <div className={styles.loginTitle}>Find ID</div>
           <div className={styles.welcomeText}>
-            안녕하세요! 모아올리오에 오신것을 환영합니다.
+            이용하던 아이디를 잊으셨나요? 이메일과 비밀번호를 입력해주세요.
           </div>
         </div>
         <div className={styles.inputContainer}>
-          <div className={styles.googleSignInButton}>
-            <GoogleIcon />
-            Sign in with Google
+          <div className={styles.findContainer}>
+            <div className={styles.findId}>아이디 찾기</div>
+            <div className={styles.findPassword}>비밀번호 찾기</div>
           </div>
           <Stroke />
           <div className={styles.loginInputId}>
             <input
               className={styles.idInput}
-              placeholder="아이디를 입력해주세요."
+              placeholder="E-mail을 입력해주세요."
             />
           </div>
           <div className={styles.loginInputPassword}>
@@ -38,20 +36,15 @@ const Page = () => {
             />
           </div>
           <div className={styles.checkContainer}>
-            <input
-              className={styles.checkBox}
-              type="checkbox"
-            />
-            <label className={styles.checkLabel}>
-              다음에도 이 아이디를 기억합니다.
+            <label className={styles.forgotPassword}>
+              E-mail을 잊어버리셨나요?
             </label>
-            <Link
-              href="/login/findid"
-              className={styles.forgotPassword}>
-              아이디/비밀번호를 잊으셨나요?
-            </Link>
           </div>
-          <div className={styles.signIn}> Sign in!</div>
+          <Link
+            href="/login/findId2"
+            className={styles.signIn}>
+            아이디 찾기
+          </Link>
           <div className={styles.signUpBox}>
             <label className={styles.signUpText}>
               등록된 계정이 없으신가요?

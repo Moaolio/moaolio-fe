@@ -41,6 +41,8 @@
         text-align: center;
         white-space: nowrap;
         margin-top: 10px;
+        color: #4d4d4d;
+        text-align: center;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -107,6 +109,7 @@
             font-weight: 400;
             line-height: normal;
             color: #c1c1c1;
+            font-family: Pretendard;
           }
         }
       }
@@ -143,6 +146,7 @@
             font-weight: 400;
             line-height: normal;
             color: #c1c1c1;
+            font-family: Pretendard;
           }
         }
       }
@@ -166,13 +170,14 @@
         }
 
         .forgotPassword {
+          color: #4d4d4d;
           font-size: 12px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
           text-decoration-line: underline;
           cursor: pointer;
-
+          text-decoration: none;
           margin-left: 154px;
         }
       }

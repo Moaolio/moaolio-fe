@@ -28,6 +28,8 @@
         width: 403px;
         height: 36px;
         text-align: center;
+        color: #1c1c1c;
+        text-align: center;
         font-size: 30px;
         font-style: normal;
         font-weight: 700;
@@ -40,6 +42,8 @@
         text-align: center;
         white-space: nowrap;
         margin-top: 10px;
+        color: #4d4d4d;
+        text-align: center;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -63,6 +67,13 @@
         width: 479px;
         display: flex;
         padding-top: 26px;
+        .textLabel {
+          color: #4d4d4d;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
 
         .textLabel1 {
           color: #4d4d4d;
@@ -115,6 +126,7 @@
             font-weight: 400;
             line-height: normal;
             color: #c1c1c1;
+            font-family: Pretendard;
           }
         }
         .sendEmail {
@@ -161,6 +173,7 @@
             font-weight: 400;
             line-height: normal;
             color: #c1c1c1;
+            font-family: Pretendard;
           }
         }
         .checkNumber {
@@ -208,6 +221,7 @@
               font-weight: 400;
               line-height: normal;
               color: #c1c1c1;
+              font-family: Pretendard;
             }
           }
         }
@@ -244,6 +258,7 @@
               font-weight: 400;
               line-height: normal;
               color: #c1c1c1;
+              font-family: Pretendard;
             }
           }
         }

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 import Stroke from '../../../assets/icons/Stroke'
-import styles from '@/app/login/findid/page.module.scss'
+import styles from '@/app/login/findpassword1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 
@@ -11,28 +11,35 @@ const Page = () => {
       <LoginBackgroundImage />
       <div className={styles.mainContainer}>
         <div className={styles.loginTitleBox}>
-          <div className={styles.loginTitle}>Find ID</div>
+          <div className={styles.loginTitle}>Find Password</div>
           <div className={styles.welcomeText}>
-            이용하던 아이디를 잊으셨나요? 이메일과 비밀번호를 입력해주세요.
+            이용하던 비밀번호를 잊으셨나요? 아이디와 이메일을 입력해주세요.
           </div>
         </div>
         <div className={styles.inputContainer}>
           <div className={styles.findContainer}>
-            <div className={styles.findId}>아이디 찾기</div>
-            <div className={styles.findPassword}>비밀번호 찾기</div>
+            <Link
+              href="/login/findid1"
+              className={styles.findId}>
+              아이디 찾기
+            </Link>
+            <Link
+              href="/login/findpassword1"
+              className={styles.findPassword}>
+              비밀번호 찾기
+            </Link>
           </div>
           <Stroke />
           <div className={styles.loginInputId}>
             <input
               className={styles.idInput}
-              placeholder="E-mail을 입력해주세요."
+              placeholder="아이디를 입력해주세요"
             />
           </div>
           <div className={styles.loginInputPassword}>
             <input
               className={styles.passwordInput}
-              type="password"
-              placeholder="비밀번호를 입력해주세요."
+              placeholder="E-mail을 입력해주세요"
             />
           </div>
           <div className={styles.checkContainer}>
@@ -43,7 +50,7 @@ const Page = () => {
           <Link
             href="/login/findId2"
             className={styles.signIn}>
-            아이디 찾기
+            인증번호 발송
           </Link>
           <div className={styles.signUpBox}>
             <label className={styles.signUpText}>

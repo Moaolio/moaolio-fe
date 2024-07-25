@@ -70,7 +70,7 @@
           width: 232px;
           height: 55px;
           border-radius: 7px;
-          background: #60b7cd;
+          background-color: #ecedef;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -81,10 +81,11 @@
           font-style: normal;
           font-weight: 500;
           line-height: normal;
-          color: #fff;
+          color: #4d4d4d;
+          text-decoration: none;
         }
         .findPassword {
-          background-color: #ecedef;
+          background-color: #60b7cd;
           border-radius: 7px;
           margin-top: 43px;
           width: 232px;
@@ -98,7 +99,8 @@
           font-style: normal;
           font-weight: 500;
           line-height: normal;
-          color: #4d4d4d;
+          color: #fff;
+          text-decoration: none;
         }
       }
 
@@ -182,15 +184,12 @@
 
         .forgotPassword {
           color: #4d4d4d;
-          font-family: Pretendard;
           font-size: 12px;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
           text-decoration-line: underline;
           cursor: pointer;
-
-          margin-left: 154px;
         }
       }
       .signIn {

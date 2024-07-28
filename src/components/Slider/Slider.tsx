@@ -67,6 +67,7 @@ const Slider = ({ slides, autoplay = true }: SliderProps) => {
                 alt={slide.imageAlt}
                 width={slide.imageWidth}
                 height={slide.imageHeight}
+                priority
               />
             </div>
           </div>

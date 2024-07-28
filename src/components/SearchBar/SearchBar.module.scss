@@ -1,0 +1,34 @@
+@import 'utils';
+
+.searchForm {
+  position: relative;
+  z-index: 1;
+
+  .searchBar {
+    width: 100%;
+    height: 39px;
+    background-color: #aecdd480;
+    border: none;
+    border-radius: 40px;
+    padding: 0 20px 0 90px;
+    outline: none;
+  }
+
+  .iconContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+
+    .filterIcon {
+      @include flexLayout;
+    }
+
+    .searchIcon {
+      @include flexLayout;
+    }
+  }
+}

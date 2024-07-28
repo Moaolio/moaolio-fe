@@ -1,7 +1,7 @@
 @import 'utils';
 .headerWrapper {
-  @include flexLayout($justifyContent: space-around);
-  padding: 30px 0;
+  @include flexLayout($justifyContent: space-between);
+  padding: 30px 150px;
   a {
     @include flexLayout($justifyContent: flex-start, $gap: 7px);
     color: #202020;

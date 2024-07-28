@@ -6,6 +6,20 @@
 
     .introduceWrapper {
       margin: 0 150px;
+      position: relative;
+
+      .searchBarWrapper {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        padding: 0 70px;
+      }
+      @media (max-width: 1300px) {
+        .searchBarWrapper {
+          position: static;
+          padding: 20px 50px;
+        }
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ const Page = () => {
               다음에도 이 아이디를 기억합니다.
             </label>
             <Link
-              href="/login/findid"
+              href="/login/findid1"
               className={styles.forgotPassword}>
               아이디/비밀번호를 잊으셨나요?
             </Link>

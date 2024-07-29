@@ -1,10 +1,16 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@/app/login/signup1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
+import { useSignUpStore } from '@/store/useSignUpStore'
 
 const Page = () => {
+  //스토어 상태 불러오기
+  const { userSignUp, setUserSignUp } = useSignUpStore()
+  //상태 초기화
+  const [formState, setFormState] = useState(userSignUp)
+
   return (
     <div className={styles.parentContainer}>
       <LoginBackgroundImage />

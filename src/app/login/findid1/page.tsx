@@ -49,7 +49,7 @@ const Page = () => {
             </label>
           </div>
           <Link
-            href="/login/findId2"
+            href="/login/findid2"
             className={styles.signIn}>
             아이디 찾기
           </Link>

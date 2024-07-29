@@ -48,7 +48,7 @@ const Page = () => {
             </label>
           </div>
           <Link
-            href="/login/findId2"
+            href="/login/findpassword2"
             className={styles.signIn}>
             인증번호 발송
           </Link>

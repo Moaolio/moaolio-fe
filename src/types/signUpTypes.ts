@@ -8,6 +8,6 @@ export interface UserSignUp {
 }
 
 export interface signUpTypes {
-  userSignUp: userSignUp
+  userSignUp: UserSignUp
   setUserSignUp: (newState: Partial<UserSignUp>) => void
 }

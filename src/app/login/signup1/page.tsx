@@ -4,8 +4,17 @@ import styles from '@/app/login/signup1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 import { useSignUpStore } from '@/store/useSignUpStore'
+import IdInput from '@/app/components/loginPages/IdInput'
+import { FormProvider, useForm } from 'react-hook-form'
+
+interface FormTypes {
+  id: string
+  password: string
+  confirmPassword: string
+}
 
 const Page = () => {
+  const methods = useForm<FormTypes>()
   //스토어 상태 불러오기
   const { userSignUp, setUserSignUp } = useSignUpStore()
   //상태 초기화
@@ -25,13 +34,16 @@ const Page = () => {
           <div className={styles.idTextBox}>
             <label className={styles.textLabel}>아이디</label>
           </div>
-          <div className={styles.loginInputId}>
-            <input
-              className={styles.idInput}
-              placeholder="아이디를 입력해주세요."
-            />
-            <label className={styles.checkId}>중복확인</label>
-          </div>
+          <FormProvider {...methods}>
+            <div className={styles.loginInputId}>
+              <IdInput
+                id="id"
+                type="text"
+                validation={{ required: true }}
+              />
+              <label className={styles.checkId}>중복확인</label>
+            </div>
+          </FormProvider>
           <div className={styles.idTextBox}>
             <label className={styles.textLabel}>비밀번호</label>
           </div>

@@ -29,6 +29,9 @@
         width: 403px;
         height: 36px;
         text-align: center;
+        color: #1c1c1c;
+        text-align: center;
+        font-family: Pretendard;
         font-size: 30px;
         font-style: normal;
         font-weight: 700;
@@ -36,13 +39,14 @@
       }
 
       .welcomeText {
-        width: 302px;
+        width: auto;
         height: 16px;
         text-align: center;
         white-space: nowrap;
         margin-top: 10px;
         color: #4d4d4d;
         text-align: center;
+        font-family: Pretendard;
         font-size: 13px;
         font-style: normal;
         font-weight: 400;
@@ -60,115 +64,68 @@
       border-radius: 20px;
       box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.06);
       background-color: #fff;
-      .googleSignInButton {
-        background-color: #ecedef;
-        border-radius: 7px;
-        margin-top: 43px;
-        width: 479px;
-        height: 55px;
+      .findContainer {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 52px;
-        cursor: pointer;
-        font-size: 15px;
+        .findId {
+          width: 232px;
+          height: 55px;
+          border-radius: 7px;
+          background: #60b7cd;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 43px;
+          margin-right: 15px;
+          cursor: pointer;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: #fff;
+          text-decoration: none;
+        }
+        .findPassword {
+          background-color: #ecedef;
+          border-radius: 7px;
+          margin-top: 43px;
+          width: 232px;
+          height: 55px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 52px;
+          cursor: pointer;
+          font-size: 15px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: #4d4d4d;
+          text-decoration: none;
+        }
+      }
+      .userIdText {
+        width: auto;
+        color: #1c1c1c;
+        text-align: center;
+        font-size: 17px;
         font-style: normal;
-        font-weight: 500;
+        font-weight: 400;
         line-height: normal;
+        margin-top: 122px;
+        // color: #1C1C1C;
+        // text-align: center;
+        // font-family: Pretendard;
+        // font-size: 17px;
+        // font-style: normal;
+        // font-weight: 400;
+        // line-height: normal;
       }
-
-      .loginInputId {
-        margin-top: 52px;
-        width: 479px;
-        height: 58px;
-        border-radius: 10px;
-        border: 1px solid #dbdbdb;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-
-        .idInput {
-          font-size: 15px;
-          color: #000000;
-          border: none;
-          outline: none;
-          padding-left: 19px;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          line-height: 1;
-          box-sizing: border-box;
-
-          &::placeholder {
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: #c1c1c1;
-            font-family: Pretendard;
-          }
-        }
-      }
-
-      .loginInputPassword {
-        margin-top: 12px;
-        width: 479px;
-        height: 58px;
-        border-radius: 10px;
-        border: 1px solid #dbdbdb;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        overflow: hidden;
-
-        .passwordInput {
-          font-size: 15px;
-          color: #000000;
-          border: none;
-          outline: none;
-          padding-left: 19px;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          line-height: 1;
-          box-sizing: border-box;
-
-          &::placeholder {
-            display: flex;
-            align-items: center;
-            font-size: 15px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-            color: #c1c1c1;
-            font-family: Pretendard;
-          }
-        }
-      }
-
       .checkContainer {
         margin-top: 25px;
         width: 479px;
         height: 14px;
         display: flex;
-        align-items: center;
-
-        .checkBox {
-        }
-
-        .checkLabel {
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          margin-left: 5px;
-        }
-
+        justify-content: center;
         .forgotPassword {
           color: #4d4d4d;
           font-size: 12px;
@@ -177,14 +134,12 @@
           line-height: normal;
           text-decoration-line: underline;
           cursor: pointer;
-          text-decoration: none;
-          margin-left: 154px;
         }
       }
       .signIn {
         border-radius: 7px;
         background: #60b7cd;
-        margin-top: 37px;
+        margin-top: 121px;
         width: 479px;
         height: 55px;
         display: flex;
@@ -196,6 +151,7 @@
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+        text-decoration: none;
       }
 
       .signUpBox {

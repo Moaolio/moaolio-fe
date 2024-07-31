@@ -3,12 +3,13 @@ import { useFormContext, RegisterOptions } from 'react-hook-form'
 import styles from '@/app/components/loginPages/IdInput.module.scss'
 
 interface IdInputProps {
-  id: string
+  name: string
   type: string
+  placeholder?: string
   validation?: RegisterOptions
 }
 
-const IdInput = ({ id, type, validation }: IdInputProps) => {
+const IdInput = ({ name, type, placeholder, validation }: IdInputProps) => {
   const {
     register,
     formState: { errors }
@@ -18,8 +19,8 @@ const IdInput = ({ id, type, validation }: IdInputProps) => {
     <input
       className={styles.idInputStyle}
       type={type}
-      {...register(id, validation)}
-      placeholder="아이디를 입력해주세요."
+      placeholder={placeholder}
+      {...register(name, validation)}
     />
   )
 }

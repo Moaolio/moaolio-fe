@@ -1,8 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '@/app/login/signup1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useSignUpStore } from '@/store/useSignUpStore'
 import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
@@ -11,19 +12,34 @@ interface FormTypes {
   id: string
   password: string
   confirmPassword: string
-  placeholder?: string
 }
 
 const Page = () => {
-  const methods = useForm<FormTypes>()
+  const methods = useForm<FormTypes>({
+    mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
+    criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
+  })
+  const router = useRouter()
   //스토어 상태 불러오기
-  const { userSignUp, setUserSignUp } = useSignUpStore()
-  //상태 초기화
-  const [formState, setFormState] = useState(userSignUp)
+  const { setUserSignUp } = useSignUpStore()
 
+  //데이터 취합 해야함
+  const onSubmit = (data: FormTypes) => {
+    if (data.password !== data.confirmPassword) {
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+      return
+    }
+    setUserSignUp({
+      id: data.id,
+      password: data.password
+    })
+    router.push('/login/signup2')
+  }
   return (
     <FormProvider {...methods}>
-      <div className={styles.parentContainer}>
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className={styles.parentContainer}>
         <LoginBackgroundImage />
         <div className={styles.mainContainer}>
           <div className={styles.loginTitleBox}>
@@ -63,18 +79,18 @@ const Page = () => {
             </div>
             <div className={styles.checkPassword}>
               <IdInput
-                name="password"
+                name="confirmPassword"
                 type="password"
                 placeholder="비밀번호를 확인해주세요."
                 validation={{ required: '비밀번호 확인을 입력해주세요.' }}
               />
             </div>
 
-            <Link
-              href="/login/signup2"
+            <button
+              type="submit"
               className={styles.next}>
               다음(1/3)
-            </Link>
+            </button>
             <div className={styles.signInBox}>
               <label className={styles.signInText}>
                 이미 계정이 있으신가요?
@@ -87,7 +103,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </FormProvider>
   )
 }

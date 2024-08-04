@@ -5,17 +5,24 @@ import Link from 'next/link'
 import styles from '@/app/login/signup2/page.module.scss'
 import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
-
+import { useRouter } from 'next/router'
+import { useSignUpStore } from '@/store/useSignUpStore'
 interface FormTypes {
   email: string
   emailCode: string
   name: string
   nickName: string
-  placeholder?: string
 }
 
 const Page = () => {
   const methods = useForm<FormTypes>()
+  const router = useRouter
+  const { setUserSignUp } = useSignUpStore()
+  const onSubmit = (data: FormTypes) => {
+    setUserSignUp({
+      email: data.email
+    })
+  }
 
   return (
     <FormProvider {...methods}>

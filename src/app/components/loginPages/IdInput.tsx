@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { useFormContext, RegisterOptions } from 'react-hook-form'
 import styles from '@/app/components/loginPages/IdInput.module.scss'

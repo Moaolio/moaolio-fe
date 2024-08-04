@@ -8,7 +8,6 @@ import { FormProvider, useForm } from 'react-hook-form'
 
 interface FormTypes {
   name: string
-  placeholder?: string
   job: string
   tech: string
   career: string

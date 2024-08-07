@@ -17,12 +17,14 @@ const IdInput = ({ name, type, placeholder, validation }: IdInputProps) => {
   } = useFormContext()
 
   return (
-    <input
-      className={styles.idInputStyle}
-      type={type}
-      placeholder={placeholder}
-      {...register(name, validation)}
-    />
+    <>
+      <input
+        className={styles.idInputStyle}
+        type={type}
+        placeholder={placeholder}
+        {...register(name, validation)}
+      />
+    </>
   )
 }
 

@@ -5,7 +5,7 @@ import Link from 'next/link'
 import styles from '@/app/login/signup2/page.module.scss'
 import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { useSignUpStore } from '@/store/useSignUpStore'
 interface FormTypes {
   email: string
@@ -19,8 +19,17 @@ const Page = () => {
   const router = useRouter
   const { setUserSignUp } = useSignUpStore()
   const onSubmit = (data: FormTypes) => {
+    if (!data.emailCode) {
+      alert('이메일 인증번호를 입력해주세요.')
+    } else if (!data.name) {
+      alert('이름을 입력해주세요.')
+    } else if (!data.nickName) {
+      alert('닉네임을 입력해주세요.')
+      return
+    }
     setUserSignUp({
-      email: data.email
+      name: data.name,
+      nickName: data.nickName
     })
   }
 

@@ -8,6 +8,7 @@ import { useSignUpStore } from '@/store/useSignUpStore'
 import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
 
+//id 중복확인 기능 필요
 interface FormTypes {
   id: string
   password: string
@@ -23,12 +24,33 @@ const Page = () => {
   //스토어 상태 불러오기
   const { setUserSignUp } = useSignUpStore()
 
-  //데이터 취합 해야함
   const onSubmit = (data: FormTypes) => {
+    if (!data.id) {
+      alert('아이디를 입력해주세요.')
+      return
+    }
+    if (!data.password) {
+      alert('비밀번호를 입력해주세요.')
+      return
+    }
+
+    // if (errors.id) {
+    //   alert(errors.id.message)
+    //   return
+    // }
+    // if (errors.password) {
+    //   alert(errors.password.message)
+    //   return
+    // }
+    // if (errors.confirmPassword) {
+    //   alert(errors.confirmPassword.message)
+    //   return
+    // }
     if (data.password !== data.confirmPassword) {
       alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
       return
     }
+
     setUserSignUp({
       id: data.id,
       password: data.password

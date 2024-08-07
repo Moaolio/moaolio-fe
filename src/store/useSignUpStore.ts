@@ -6,7 +6,6 @@ export const useSignUpStore = create<signUpTypes>(set => ({
     id: '',
     password: '',
     confirmPassword: '',
-    email: '',
     name: '',
     nickName: ''
   },

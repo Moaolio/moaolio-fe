@@ -1,7 +1,6 @@
 export interface UserSignUp {
   id: string
   password: string
-  email: string
   name: string
   nickName: string
 }

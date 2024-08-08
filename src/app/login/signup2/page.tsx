@@ -7,35 +7,56 @@ import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import { useSignUpStore } from '@/store/useSignUpStore'
+import axios from 'axios'
 interface FormTypes {
   email: string
   emailCode: string
   name: string
-  nickName: string
+  birth: string
 }
 
 const Page = () => {
-  const methods = useForm<FormTypes>()
-  const router = useRouter
+  const methods = useForm<FormTypes>({
+    mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
+    criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
+  })
+  const router = useRouter()
   const { setUserSignUp } = useSignUpStore()
-  const onSubmit = (data: FormTypes) => {
+
+  const onSubmit = async (data: FormTypes) => {
     if (!data.emailCode) {
       alert('이메일 인증번호를 입력해주세요.')
+      return
     } else if (!data.name) {
       alert('이름을 입력해주세요.')
-    } else if (!data.nickName) {
-      alert('닉네임을 입력해주세요.')
+      return
+    } else if (!data.birth) {
+      alert('생년월일을 입력해주세요.')
       return
     }
-    setUserSignUp({
-      name: data.name,
-      nickName: data.nickName
-    })
+
+    try {
+      await axios.post('/api/user/signup', data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      setUserSignUp({
+        name: data.name,
+        birth: data.birth
+      })
+      router.push('/login/signin')
+    } catch (error) {
+      console.error('회원가입 중 오류 발생:', error)
+      alert('회원가입 중 오류가 발생했습니다.')
+    }
   }
 
   return (
     <FormProvider {...methods}>
-      <div className={styles.parentContainer}>
+      <form
+        onSubmit={methods.handleSubmit(onSubmit)}
+        className={styles.parentContainer}>
         <LoginBackgroundImage />
         <div className={styles.mainContainer}>
           <div className={styles.loginTitleBox}>
@@ -84,18 +105,18 @@ const Page = () => {
               </div>
               <div className={styles.nickNameInputDiv}>
                 <IdInput
-                  name="nickName"
+                  name="birth"
                   type="text"
-                  placeholder="닉네임을 입력해주세요."
-                  validation={{ required: '닉네임을 입력해주세요.' }}
+                  placeholder="6자리 생년월일 입력."
+                  validation={{ required: '6자리 생년월일을 입력해주세요.' }}
                 />
               </div>
             </div>
 
             <Link
-              href="/login/signup3"
+              href="/login/signin"
               className={styles.next}>
-              다음(2/3)
+              가입을 환영합니다!
             </Link>
             <div className={styles.signInBox}>
               <label className={styles.signInText}>
@@ -109,7 +130,7 @@ const Page = () => {
             </div>
           </div>
         </div>
-      </div>
+      </form>
     </FormProvider>
   )
 }

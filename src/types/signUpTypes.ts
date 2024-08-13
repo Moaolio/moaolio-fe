@@ -3,6 +3,7 @@ export interface UserSignUp {
   password: string
   name: string
   birth: string
+  email: string
 }
 
 export interface signUpTypes {

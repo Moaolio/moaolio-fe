@@ -16,18 +16,19 @@ interface FormTypes {
 }
 
 const Page = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const methods = useForm<FormTypes>({
     mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
   const router = useRouter()
-  const { setUserSignUp } = useSignUpStore()
-
+  const { userSignUp, setUserSignUp } = useSignUpStore()
   const onSubmit = async (data: FormTypes) => {
-    if (!data.emailCode) {
-      alert('이메일 인증번호를 입력해주세요.')
-      return
-    } else if (!data.name) {
+    // if (!data.emailCode) {
+    //   alert('이메일 인증번호를 입력해주세요.')
+    //   return
+    // } else
+    if (!data.name) {
       alert('이름을 입력해주세요.')
       return
     } else if (!data.birth) {
@@ -35,15 +36,24 @@ const Page = () => {
       return
     }
 
+    const combinedData = {
+      ...userSignUp, // 첫 번째 페이지 데이터
+      email: data.email,
+      name: data.name,
+      birth: data.birth
+    }
+
     try {
-      await axios.post('/api/user/signup', data, {
+      await axios.post(`${apiUrl}/user/signup`, combinedData, {
         headers: {
           'Content-Type': 'application/json'
         }
       })
+      console.log('회원가입 성공')
       setUserSignUp({
         name: data.name,
-        birth: data.birth
+        birth: data.birth,
+        email: data.email
       })
       router.push('/login/signin')
     } catch (error) {
@@ -113,11 +123,11 @@ const Page = () => {
               </div>
             </div>
 
-            <Link
-              href="/login/signin"
+            <button
+              type="submit"
               className={styles.next}>
               가입을 환영합니다!
-            </Link>
+            </button>
             <div className={styles.signInBox}>
               <label className={styles.signInText}>
                 이미 계정이 있으신가요?

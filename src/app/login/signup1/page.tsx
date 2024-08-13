@@ -111,7 +111,7 @@ const Page = () => {
             <button
               type="submit"
               className={styles.next}>
-              다음(1/3)
+              다음(1/2)
             </button>
             <div className={styles.signInBox}>
               <label className={styles.signInText}>

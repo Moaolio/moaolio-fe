@@ -1,10 +1,9 @@
 export interface UserSignUp {
   id: string
   password: string
-  email: string
-  code: number
   name: string
-  nickName: string
+  birth: string
+  email: string
 }
 
 export interface signUpTypes {

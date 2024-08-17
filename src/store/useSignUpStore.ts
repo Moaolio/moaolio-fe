@@ -5,10 +5,9 @@ export const useSignUpStore = create<signUpTypes>(set => ({
   userSignUp: {
     id: '',
     password: '',
-    email: '',
-    code: 0,
     name: '',
-    nickName: ''
+    birth: '',
+    email: ''
   },
   setUserSignUp: newState =>
     set(state => ({

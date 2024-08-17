@@ -24,14 +24,13 @@ const Page = () => {
   const router = useRouter()
   const { userSignUp, setUserSignUp } = useSignUpStore()
   const onSubmit = async (data: FormTypes) => {
-    // if (!data.emailCode) {
-    //   alert('이메일 인증번호를 입력해주세요.')
-    //   return
-    // } else
-    if (!data.name) {
+    if (data.emailCode === '') {
+      alert('이메일 인증번호를 입력해주세요.')
+      return
+    } else if (data.name === '') {
       alert('이름을 입력해주세요.')
       return
-    } else if (!data.birth) {
+    } else if (data.birth === '') {
       alert('생년월일을 입력해주세요.')
       return
     }

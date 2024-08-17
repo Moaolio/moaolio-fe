@@ -13,8 +13,10 @@ interface IdInputProps {
 const IdInput = ({ name, type, placeholder, validation }: IdInputProps) => {
   const {
     register,
-    formState: { errors }
+    formState: { errors, isSubmitted }
   } = useFormContext()
+
+  const errorMessage = errors[name]?.message as string | undefined
 
   return (
     <>
@@ -24,6 +26,9 @@ const IdInput = ({ name, type, placeholder, validation }: IdInputProps) => {
         placeholder={placeholder}
         {...register(name, validation)}
       />
+      {isSubmitted && errors[name] && (
+        <div className={styles.errorMessage}>{errorMessage}</div>
+      )}
     </>
   )
 }

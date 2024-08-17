@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@/app/login/signup1/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useSignUpStore } from '@/store/useSignUpStore'
 import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
+import axios from 'axios'
 
 //id 중복확인 기능 필요
 interface FormTypes {
@@ -16,38 +17,47 @@ interface FormTypes {
 }
 
 const Page = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
+  const [availableId, setAvailableId] = useState(false)
+
   const methods = useForm<FormTypes>({
     mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
+
+  const onClickIdCheck = async (id: string) => {
+    try {
+      const response = await axios.post(
+        `${apiUrl}/user/idCheck`,
+        { id },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      if (response.data.isAvailable) {
+        setAvailableId(true)
+        alert('사용 가능한 아이디입니다.')
+      } else {
+        setAvailableId(false)
+        alert('이미 사용 중인 아이디입니다.')
+      }
+    } catch (error) {
+      console.log('ID 중복 확인 중 오류 발생:', error)
+    }
+  }
   const router = useRouter()
   //스토어 상태 불러오기
   const { setUserSignUp } = useSignUpStore()
 
   const onSubmit = (data: FormTypes) => {
-    if (!data.id) {
-      alert('아이디를 입력해주세요.')
-      return
-    }
-    if (!data.password) {
-      alert('비밀번호를 입력해주세요.')
-      return
-    }
-
-    // if (errors.id) {
-    //   alert(errors.id.message)
-    //   return
-    // }
-    // if (errors.password) {
-    //   alert(errors.password.message)
-    //   return
-    // }
-    // if (errors.confirmPassword) {
-    //   alert(errors.confirmPassword.message)
-    //   return
-    // }
     if (data.password !== data.confirmPassword) {
       alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+      return
+    }
+    if (!availableId) {
+      alert('아이디 중복 확인을 해주세요.')
       return
     }
 
@@ -82,7 +92,13 @@ const Page = () => {
                 placeholder="아이디를 입력해주세요."
                 validation={{ required: '아이디를 입력해주세요.' }}
               />
-              <label className={styles.checkId}>중복확인</label>
+              <label
+                className={styles.checkId}
+                onClick={() => {
+                  onClickIdCheck(methods.getValues('id'))
+                }}>
+                중복확인
+              </label>
             </div>
 
             <div className={styles.idTextBox}>

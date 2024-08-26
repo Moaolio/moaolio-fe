@@ -1,5 +1,5 @@
 export interface UserSignUp {
-  id: string
+  username: string
   password: string
   name: string
   birth: string

@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GoogleIcon from '../../../assets/icons/GoogleIcon'
 import Stroke from '../../../assets/icons/Stroke'
 import styles from '@/app/login/signin/page.module.scss'
@@ -12,7 +12,7 @@ interface FormTypes {
   email: string
   name: string
   birth: string
-  id: string
+  username: string
   password: string
 }
 
@@ -23,14 +23,49 @@ const Page = () => {
     mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
-  const onSubmit: SubmitHandler<FormTypes> = ({ id, password }) => {
+
+  //쿠키설정
+  const setCookie = (username: string, value: string, days: number) => {
+    const expires = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()
+    document.cookie = `${username}=${encodeURIComponent(value)}; expires=${expires};`
+  }
+
+  //쿠키 가져오기
+  const getCookie = (username: string) => {
+    return document.cookie.split(';').reduce((result, cookie) => {
+      const [key, value] = cookie.split('=')
+      return key === username ? decodeURIComponent(value) : result
+    }, '')
+  }
+
+  //쿠키삭제
+  const deleteCookie = (username: string) => {
+    document.cookie = `${username}=; expires=Thu, 01 Jan 1970 00:00:01 UTC;`
+  }
+
+  //페이지로드 시 쿠키에서 id 불러오기
+  useEffect(() => {
+    const savedId = getCookie('username')
+    if (savedId) {
+      methods.setValue('username', savedId)
+      setSaveId(true)
+    }
+  }, [methods])
+
+  const onSubmit: SubmitHandler<FormTypes> = ({ username, password }) => {
+    if (saveId) {
+      setCookie('username', username, 1) //test삼아 1일동안 쿠키유지
+    } else {
+      deleteCookie('username')
+    }
+
     const userData = {
-      id: id,
+      username: username,
       password: password
     }
 
     axios
-      .post(`${apiUrl}/user/login`, userData, {
+      .post(`${apiUrl}/api/user/login`, userData, {
         headers: { 'Content-Type': `application/json` }
       })
       .then(loginSuccess)
@@ -69,6 +104,7 @@ const Page = () => {
               <input
                 className={styles.idInput}
                 placeholder="아이디를 입력해주세요."
+                {...methods.register('username')}
               />
             </div>
             <div className={styles.loginInputPassword}>

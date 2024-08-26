@@ -9,9 +9,8 @@ import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
 import axios from 'axios'
 
-//id 중복확인 기능 필요
 interface FormTypes {
-  id: string
+  username: string
   password: string
   confirmPassword: string
 }
@@ -25,10 +24,15 @@ const Page = () => {
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
 
+  const router = useRouter()
+  //스토어 상태 불러오기
+  const { setUserSignUp } = useSignUpStore()
+
   const onClickIdCheck = async (id: string) => {
+    //body로 수정해야함
     try {
       const response = await axios.post(
-        `${apiUrl}/user/idCheck`,
+        `${apiUrl}/api/user/idCheck`,
         { id },
         {
           headers: {
@@ -47,9 +51,6 @@ const Page = () => {
       console.log('ID 중복 확인 중 오류 발생:', error)
     }
   }
-  const router = useRouter()
-  //스토어 상태 불러오기
-  const { setUserSignUp } = useSignUpStore()
 
   const onSubmit = (data: FormTypes) => {
     if (data.password !== data.confirmPassword) {
@@ -62,7 +63,7 @@ const Page = () => {
     }
 
     setUserSignUp({
-      id: data.id,
+      username: data.username,
       password: data.password
     })
     router.push('/login/signup2')
@@ -87,7 +88,7 @@ const Page = () => {
 
             <div className={styles.loginInputId}>
               <IdInput
-                name="id"
+                name="username"
                 type="text"
                 placeholder="아이디를 입력해주세요."
                 validation={{ required: '아이디를 입력해주세요.' }}
@@ -95,7 +96,7 @@ const Page = () => {
               <label
                 className={styles.checkId}
                 onClick={() => {
-                  onClickIdCheck(methods.getValues('id'))
+                  onClickIdCheck(methods.getValues('username'))
                 }}>
                 중복확인
               </label>

@@ -41,9 +41,10 @@ const Page = () => {
       name: data.name,
       birth: data.birth
     }
+    console.log('데이터:', combinedData)
 
     try {
-      await axios.post(`${apiUrl}/user/signup`, combinedData, {
+      await axios.post(`${apiUrl}/api/user/signup`, combinedData, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -101,7 +102,7 @@ const Page = () => {
             </div>
             <div className={styles.idTextBox}>
               <label className={styles.textLabel1}>이름</label>
-              <label className={styles.textLabel2}>닉네임</label>
+              <label className={styles.textLabel2}>생년월일</label>
             </div>
             <div className={styles.nameNicknameBox}>
               <div className={styles.nameInputDiv}>

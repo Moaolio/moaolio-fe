@@ -68,6 +68,7 @@ const Page = () => {
     })
     router.push('/login/signup2')
   }
+
   return (
     <FormProvider {...methods}>
       <form
@@ -91,7 +92,13 @@ const Page = () => {
                 name="username"
                 type="text"
                 placeholder="아이디를 입력해주세요."
-                validation={{ required: '아이디를 입력해주세요.' }}
+                validation={{
+                  required: '아이디를 입력해주세요.',
+                  pattern: {
+                    value: /^[a-zA-Z0-9]+$/,
+                    message: '영어 대소문자와 숫자만 입력해주세요.'
+                  }
+                }}
               />
               <label
                 className={styles.checkId}
@@ -110,7 +117,15 @@ const Page = () => {
                 name="password"
                 type="password"
                 placeholder="비밀번호를 입력해주세요."
-                validation={{ required: '비밀번호를 입력해주세요.' }}
+                validation={{
+                  required: '비밀번호를 입력해주세요.',
+                  pattern: {
+                    value:
+                      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()[\]{};:'",.<>/?\\|`~\-+=])[A-Za-z\d!@#$%^&*()[\]{};:'",.<>/?\\|`~\-+=]{8,16}$/,
+                    message:
+                      '길이가 8~16자인 특수문자, 알파벳, 숫자가 포함되어야 합니다.'
+                  }
+                }}
               />
             </div>
             <div className={styles.idTextBox}>

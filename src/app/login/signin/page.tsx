@@ -7,6 +7,7 @@ import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundIma
 import Link from 'next/link'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
 import axios, { AxiosResponse } from 'axios'
+import { useRouter } from 'next/navigation'
 
 interface FormTypes {
   email: string
@@ -23,6 +24,7 @@ const Page = () => {
     mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
+  const router = useRouter()
 
   //쿠키설정
   const setCookie = (username: string, value: string, days: number) => {
@@ -50,6 +52,11 @@ const Page = () => {
       methods.setValue('username', savedId)
       setSaveId(true)
     }
+    //로컬스토리지에서 토큰을 가져와 헤더 설정(로그인이 된 후 재렌더링 시)
+    const accessToken = localStorage.getItem('access_token')
+    if (accessToken) {
+      axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+    }
   }, [methods])
 
   const onSubmit: SubmitHandler<FormTypes> = ({ username, password }) => {
@@ -72,13 +79,18 @@ const Page = () => {
       .catch(loginError)
   }
 
-  const loginSuccess = (response: AxiosResponse) => {
-    const access_token = response.headers.authorization
-    axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`
-  }
-
   const loginError = (error: string) => {
     console.error('로그인 에러:', error)
+  }
+
+  const loginSuccess = (response: AxiosResponse) => {
+    // 토큰을 응답 본문에서 추출
+    const accessToken = response.data.access_token
+    // 로컬 스토리지에 저장
+    localStorage.setItem('access_token', accessToken)
+    // Axios의 기본 헤더에 Authorization 설정
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
+    router.push('/')
   }
 
   return (
@@ -112,6 +124,7 @@ const Page = () => {
                 className={styles.passwordInput}
                 type="password"
                 placeholder="비밀번호를 입력해주세요."
+                {...methods.register('password')}
               />
             </div>
             <div className={styles.checkContainer}>

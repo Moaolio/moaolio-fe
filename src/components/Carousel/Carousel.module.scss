@@ -1,0 +1,47 @@
+@import 'utils';
+
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+
+  .carouselInner {
+    @include flexLayout($justifyContent: flex-start, $gap: 27px);
+    padding: 28px 0;
+    transition: transform 0.3s ease-in-out;
+
+    .imageWrapper {
+      position: relative;
+      width: 23%;
+      aspect-ratio: 1;
+      border-radius: 15px;
+      overflow: hidden;
+      flex-shrink: 0; // 화면 너비 줄어들어도 크기 작아지지 않도록
+    }
+  }
+}
+
+.prevButton,
+.nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prevButton {
+  left: 10px;
+}
+
+.nextButton {
+  right: 10px;
+}
+
+.prevButton:hover,
+.nextButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}

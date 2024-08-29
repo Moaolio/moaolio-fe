@@ -28,19 +28,21 @@ const Page = () => {
   //스토어 상태 불러오기
   const { setUserSignUp } = useSignUpStore()
 
-  const onClickIdCheck = async (id: string) => {
+  const onClickIdCheck = async (username: string) => {
     //body로 수정해야함
     try {
       const response = await axios.post(
         `${apiUrl}/api/user/idCheck`,
-        { id },
+        { username },
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }
       )
-      if (response.data.isAvailable) {
+      console.log(response.data)
+
+      if (response.data.data.available) {
         setAvailableId(true)
         alert('사용 가능한 아이디입니다.')
       } else {

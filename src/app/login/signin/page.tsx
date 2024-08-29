@@ -6,7 +6,7 @@ import styles from '@/app/login/signin/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
 import { useRouter } from 'next/navigation'
 
 interface FormTypes {
@@ -17,43 +17,49 @@ interface FormTypes {
   password: string
 }
 
+interface LoginResponse {
+  access_token: string
+}
+
 const Page = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const [saveId, setSaveId] = useState(false)
   const methods = useForm<FormTypes>({
-    mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
-    criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
+    mode: 'onBlur',
+    criteriaMode: 'all'
   })
   const router = useRouter()
 
-  //쿠키설정
+  // 쿠키 설정
   const setCookie = (username: string, value: string, days: number) => {
-    const expires = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toUTCString()
+    const expires = new Date(
+      Date.now() + days * 24 * 60 * 60 * 1000
+    ).toUTCString()
     document.cookie = `${username}=${encodeURIComponent(value)}; expires=${expires};`
   }
 
-  //쿠키 가져오기
+  // 쿠키 가져오기
   const getCookie = (username: string) => {
     return document.cookie.split(';').reduce((result, cookie) => {
       const [key, value] = cookie.split('=')
-      return key === username ? decodeURIComponent(value) : result
+      return key.trim() === username ? decodeURIComponent(value) : result
     }, '')
   }
 
-  //쿠키삭제
+  // 쿠키 삭제
   const deleteCookie = (username: string) => {
     document.cookie = `${username}=; expires=Thu, 01 Jan 1970 00:00:01 UTC;`
   }
 
-  //페이지로드 시 쿠키에서 id 불러오기
+  // 페이지 로드 시 쿠키에서 id 불러오기
   useEffect(() => {
     const savedId = getCookie('username')
     if (savedId) {
       methods.setValue('username', savedId)
       setSaveId(true)
     }
-    //로컬스토리지에서 토큰을 가져와 헤더 설정(로그인이 된 후 재렌더링 시)
-    const accessToken = localStorage.getItem('access_token')
+    // 로컬스토리지에서 토큰을 가져와 헤더 설정
+    const accessToken = localStorage.getItem('accessToken')
     if (accessToken) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
     }
@@ -61,7 +67,7 @@ const Page = () => {
 
   const onSubmit: SubmitHandler<FormTypes> = ({ username, password }) => {
     if (saveId) {
-      setCookie('username', username, 1) //test삼아 1일동안 쿠키유지
+      setCookie('username', username, 1)
     } else {
       deleteCookie('username')
     }
@@ -73,22 +79,28 @@ const Page = () => {
 
     axios
       .post(`${apiUrl}/api/user/login`, userData, {
-        headers: { 'Content-Type': `application/json` }
+        headers: { 'Content-Type': 'application/json' }
       })
       .then(loginSuccess)
       .catch(loginError)
   }
 
-  const loginError = (error: string) => {
-    console.error('로그인 에러:', error)
+  const loginError = (error: AxiosError<LoginResponse>) => {
+    if (error.response) {
+      console.log('로그인 실패 데이터', error.response.data)
+      const accessToken = error.response.data?.access_token
+      if (accessToken) {
+        console.log('실패 시 응답에서 받은 토큰:', accessToken)
+      }
+    } else {
+      console.error('로그인 요청 실패:', error.message)
+    }
   }
 
-  const loginSuccess = (response: AxiosResponse) => {
-    // 토큰을 응답 본문에서 추출
+  const loginSuccess = (response: AxiosResponse<LoginResponse>) => {
     const accessToken = response.data.access_token
-    // 로컬 스토리지에 저장
-    localStorage.setItem('access_token', accessToken)
-    // Axios의 기본 헤더에 Authorization 설정
+    console.log(accessToken)
+    localStorage.setItem('accessToken', accessToken)
     axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`
     router.push('/')
   }

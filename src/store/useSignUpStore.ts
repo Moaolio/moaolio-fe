@@ -3,7 +3,7 @@ import { signUpTypes } from '@/types/signUpTypes'
 
 export const useSignUpStore = create<signUpTypes>(set => ({
   userSignUp: {
-    username: '',
+    uid: '',
     password: '',
     email: '',
     name: '',

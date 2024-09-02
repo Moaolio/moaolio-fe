@@ -10,7 +10,7 @@ import { FormProvider, useForm } from 'react-hook-form'
 import axios from 'axios'
 
 interface FormTypes {
-  username: string
+  uid: string
   password: string
   confirmPassword: string
 }
@@ -28,12 +28,12 @@ const Page = () => {
   //스토어 상태 불러오기
   const { setUserSignUp } = useSignUpStore()
 
-  const onClickIdCheck = async (username: string) => {
+  const onClickIdCheck = async (uid: string) => {
     //body로 수정해야함
     try {
       const response = await axios.post(
         `${apiUrl}/api/user/idCheck`,
-        { username },
+        { uid },
         {
           headers: {
             'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const Page = () => {
     }
 
     setUserSignUp({
-      username: data.username,
+      uid: data.uid,
       password: data.password
     })
     router.push('/login/signup2')
@@ -91,7 +91,7 @@ const Page = () => {
 
             <div className={styles.loginInputId}>
               <IdInput
-                name="username"
+                name="uid"
                 type="text"
                 placeholder="아이디를 입력해주세요."
                 validation={{
@@ -105,7 +105,7 @@ const Page = () => {
               <label
                 className={styles.checkId}
                 onClick={() => {
-                  onClickIdCheck(methods.getValues('username'))
+                  onClickIdCheck(methods.getValues('uid'))
                 }}>
                 중복확인
               </label>

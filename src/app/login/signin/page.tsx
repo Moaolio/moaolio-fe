@@ -13,7 +13,7 @@ interface FormTypes {
   email: string
   name: string
   birth: string
-  username: string
+  uid: string
   password: string
 }
 
@@ -27,31 +27,31 @@ const Page = () => {
   const router = useRouter()
 
   // 쿠키 설정
-  const setCookie = (username: string, value: string, days: number) => {
+  const setCookie = (uid: string, value: string, days: number) => {
     const expires = new Date(
       Date.now() + days * 24 * 60 * 60 * 1000
     ).toUTCString()
-    document.cookie = `${username}=${encodeURIComponent(value)}; expires=${expires}; path=/`
+    document.cookie = `${uid}=${encodeURIComponent(value)}; expires=${expires}; path=/`
   }
 
   // 쿠키 가져오기
-  const getCookie = (username: string) => {
+  const getCookie = (uid: string) => {
     const value = `; ${document.cookie}`
-    const parts = value.split(`; ${username}=`)
+    const parts = value.split(`; ${uid}=`)
     if (parts.length === 2) return parts.pop()?.split(';').shift()
     return ''
   }
 
   // 쿠키 삭제
-  const deleteCookie = (username: string) => {
-    document.cookie = `${username}=; expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/`
+  const deleteCookie = (uid: string) => {
+    document.cookie = `${uid}=; expires=Thu, 01 Jan 1970 00:00:01 UTC; path=/`
   }
 
   // 쿠키에서 id 불러오기
   useEffect(() => {
-    const savedId = getCookie('username')
+    const savedId = getCookie('uid')
     if (savedId) {
-      methods.setValue('username', savedId)
+      methods.setValue('uid', savedId)
       setSaveId(true)
     }
   }, [methods])
@@ -60,7 +60,7 @@ const Page = () => {
   const requestAccessToken = async (refreshToken: string) => {
     try {
       const response = await axios.post(
-        `${apiUrl}/api/user/login`,
+        `${apiUrl}/reissue`,
         { refresh_token: refreshToken },
         {
           headers: {
@@ -77,15 +77,15 @@ const Page = () => {
     }
   }
 
-  const onSubmit: SubmitHandler<FormTypes> = async ({ username, password }) => {
+  const onSubmit: SubmitHandler<FormTypes> = async ({ uid, password }) => {
     if (saveId) {
-      setCookie('username', username, 1)
+      setCookie('uid', uid, 1)
     } else {
-      deleteCookie('username')
+      deleteCookie('uid')
     }
 
     const userData = {
-      username: username,
+      uid: uid,
       password: password
     }
 
@@ -132,7 +132,7 @@ const Page = () => {
               <input
                 className={styles.idInput}
                 placeholder="아이디를 입력해주세요."
-                {...methods.register('username')}
+                {...methods.register('uid')}
               />
             </div>
             <div className={styles.loginInputPassword}>

@@ -50,10 +50,13 @@ const Page = () => {
         }
       })
       console.log('회원가입 성공')
+      //초기화
       setUserSignUp({
-        name: data.name,
-        birth: data.birth,
-        email: data.email
+        name: '',
+        birth: '',
+        email: '',
+        uid: '',
+        password: ''
       })
       router.push('/login/signin')
     } catch (error) {

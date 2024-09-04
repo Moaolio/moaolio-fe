@@ -9,9 +9,8 @@ import IdInput from '@/app/components/loginPages/IdInput'
 import { FormProvider, useForm } from 'react-hook-form'
 import axios from 'axios'
 
-//id 중복확인 기능 필요
 interface FormTypes {
-  id: string
+  uid: string
   password: string
   confirmPassword: string
 }
@@ -25,18 +24,25 @@ const Page = () => {
     criteriaMode: 'all' // 모든 검증 오류를 배열 형태로 반환합니다.
   })
 
-  const onClickIdCheck = async (id: string) => {
+  const router = useRouter()
+  //스토어 상태 불러오기
+  const { setUserSignUp } = useSignUpStore()
+
+  const onClickIdCheck = async (uid: string) => {
+    //body로 수정해야함
     try {
       const response = await axios.post(
-        `${apiUrl}/user/idCheck`,
-        { id },
+        `${apiUrl}/api/user/idCheck`,
+        { uid },
         {
           headers: {
             'Content-Type': 'application/json'
           }
         }
       )
-      if (response.data.isAvailable) {
+      console.log(response.data)
+
+      if (response.data.data.available) {
         setAvailableId(true)
         alert('사용 가능한 아이디입니다.')
       } else {
@@ -47,9 +53,6 @@ const Page = () => {
       console.log('ID 중복 확인 중 오류 발생:', error)
     }
   }
-  const router = useRouter()
-  //스토어 상태 불러오기
-  const { setUserSignUp } = useSignUpStore()
 
   const onSubmit = (data: FormTypes) => {
     if (data.password !== data.confirmPassword) {
@@ -62,11 +65,12 @@ const Page = () => {
     }
 
     setUserSignUp({
-      id: data.id,
+      uid: data.uid,
       password: data.password
     })
     router.push('/login/signup2')
   }
+
   return (
     <FormProvider {...methods}>
       <form
@@ -87,15 +91,21 @@ const Page = () => {
 
             <div className={styles.loginInputId}>
               <IdInput
-                name="id"
+                name="uid"
                 type="text"
                 placeholder="아이디를 입력해주세요."
-                validation={{ required: '아이디를 입력해주세요.' }}
+                validation={{
+                  required: '아이디를 입력해주세요.',
+                  pattern: {
+                    value: /^[a-zA-Z0-9]+$/,
+                    message: '영어 대소문자와 숫자만 입력해주세요.'
+                  }
+                }}
               />
               <label
                 className={styles.checkId}
                 onClick={() => {
-                  onClickIdCheck(methods.getValues('id'))
+                  onClickIdCheck(methods.getValues('uid'))
                 }}>
                 중복확인
               </label>
@@ -109,7 +119,15 @@ const Page = () => {
                 name="password"
                 type="password"
                 placeholder="비밀번호를 입력해주세요."
-                validation={{ required: '비밀번호를 입력해주세요.' }}
+                validation={{
+                  required: '비밀번호를 입력해주세요.',
+                  pattern: {
+                    value:
+                      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()[\]{};:'",.<>/?\\|`~\-+=])[A-Za-z\d!@#$%^&*()[\]{};:'",.<>/?\\|`~\-+=]{8,16}$/,
+                    message:
+                      '길이가 8~16자인 특수문자, 알파벳, 숫자가 포함되어야 합니다.'
+                  }
+                }}
               />
             </div>
             <div className={styles.idTextBox}>

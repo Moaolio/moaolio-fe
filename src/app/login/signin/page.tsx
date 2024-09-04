@@ -91,7 +91,8 @@ const Page = () => {
 
     try {
       const response = await axios.post(`${apiUrl}/api/user/login`, userData, {
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
       })
 
       const refreshToken = response.data.refresh_token

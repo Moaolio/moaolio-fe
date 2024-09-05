@@ -1,8 +1,9 @@
-import Header from './layout/Header/Header'
+import Header from '../components/Header/Header'
 import styles from './Home.module.scss'
 import Slider from '../components/Slider/Slider'
 import { MainSlides } from '../constants/SliderContents'
 import SearchBar from '@/components/SearchBar/SearchBar'
+import PortfolioBox from './_components/PortfolioBox'
 
 export default function Home() {
   return (
@@ -15,6 +16,10 @@ export default function Home() {
           </div>
           <Slider slides={MainSlides} />
         </div>
+      </section>
+      <section className={styles.secondSection}>
+        <PortfolioBox type="hot" />
+        <PortfolioBox type="recent" />
       </section>
     </div>
   )

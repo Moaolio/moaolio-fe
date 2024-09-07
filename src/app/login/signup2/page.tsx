@@ -15,7 +15,7 @@ interface FormTypes {
 
 const Page = () => {
   const [email, setEmail] = useState('')
-  const [emailSend, setEmailSend] = useState('')
+  const [emailCode, setEmailCode] = useState('')
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const methods = useForm<FormTypes>({
@@ -48,6 +48,28 @@ const Page = () => {
     } catch (error) {
       console.error(error)
       alert('인증번호 전송 중 오류가 발생했습니다.')
+    }
+  }
+
+  const onClickSendCode = async () => {
+    if (!emailCode) {
+      alert('인증번호를 입력해주세요.')
+      return
+    }
+    try {
+      await axios.post(
+        `${apiUrl}/api/auth/verify`,
+        { email, emailCode },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      alert('인증이 완료되었습니다.')
+    } catch (error) {
+      console.error(error)
+      alert('인증번호 확인 중 오류가 발생했습니다.')
     }
   }
 
@@ -129,8 +151,13 @@ const Page = () => {
                 type="text"
                 placeholder="인증번호 6자리를 입력해주세요."
                 validation={{ required: '인증번호 6자리를 입력해주세요.' }}
+                onChange={e => setEmailCode(e.target.value)}
               />
-              <label className={styles.checkNumber}>확인</label>
+              <label
+                className={styles.checkNumber}
+                onClick={onClickSendCode}>
+                확인
+              </label>
             </div>
             <div className={styles.idTextBox}>
               <label className={styles.textLabel1}>이름</label>

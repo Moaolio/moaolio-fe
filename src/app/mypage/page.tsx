@@ -1,7 +1,7 @@
 'use client'
 import React, { ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/page.module.scss'
-import { HiOutlineUserCircle } from 'react-icons/hi2'
+import ProfileImage from './_components/ProfileImage/ProfileImage'
 
 const Page = () => {
   //미리보기
@@ -59,46 +59,8 @@ const Page = () => {
 
   return (
     <div className={styles.profilePage}>
-      <div className={styles.profileImageContainer}>
-        {previewImage ? (
-          <div
-            className={styles.profileImage}
-            style={{ backgroundImage: `url(${previewImage})` }}></div>
-        ) : (
-          <HiOutlineUserCircle size={100} />
-        )}
-        <div className={styles.profileImageBtn}>
-          {selectedImage ? (
-            <>
-              <label
-                className={styles.profileImageSave}
-                onClick={handleSaveProfileImage}>
-                저장
-              </label>
-              <label
-                className={styles.profileImageCancel}
-                onClick={handleCancelEdit}>
-                취소
-              </label>
-            </>
-          ) : (
-            <>
-              <label
-                htmlFor="imageInput"
-                className={styles.profileImageSelect}>
-                수정
-              </label>
-              <input
-                id="imageInput"
-                type="file"
-                accept="image/*"
-                style={{ display: 'none' }} // 인풋 필드를 숨김
-                onChange={handleImageChange}
-              />
-            </>
-          )}
-        </div>
-      </div>
+      <ProfileImage />
+
       <div className={styles.profileInfo}>
         <div className={styles.profileEdit}>
           {editBtn ? (

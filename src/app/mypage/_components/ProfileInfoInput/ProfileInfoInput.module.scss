@@ -1,0 +1,33 @@
+.ProfileInfoInputStyle {
+  font-size: 15px;
+  color: #000000;
+  border: none;
+  outline: none;
+  padding-left: 19px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  box-sizing: border-box;
+
+  &::placeholder {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #c1c1c1;
+    font-family: Pretendard;
+  }
+}
+.errorMessage {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: red;
+  white-space: nowrap;
+  margin-right: 10px;
+}

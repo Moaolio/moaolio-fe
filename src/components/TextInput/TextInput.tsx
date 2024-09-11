@@ -1,5 +1,5 @@
 import { useFormContext, RegisterOptions } from 'react-hook-form'
-import styles from './style.module.scss'
+import styles from './TextInput.module.scss'
 interface InputProps {
   name: string
   type: string

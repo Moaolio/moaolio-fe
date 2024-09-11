@@ -1,5 +1,5 @@
-import TextArea from '@/app/components/TextArea'
-import TextInput from '@/app/components/TextInput'
+import TextArea from '@/components/TextArea/TextArea'
+import TextInput from '@/components/TextInput/TextInput'
 import styles from './BoardFormField.module.scss'
 
 const BoardFormField = () => {

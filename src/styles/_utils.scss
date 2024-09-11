@@ -1,12 +1,14 @@
 @mixin flexLayout(
   $direction: row,
   $justifyContent: center,
-  $alignItems: center
+  $alignItems: center,
+  $gap: 0
 ) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justifyContent;
   align-items: $alignItems;
+  gap: $gap;
 }
 
 @mixin common-input-styles($size: 14px, $weight: 400, $lineheight: 16px) {

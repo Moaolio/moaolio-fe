@@ -1,0 +1,28 @@
+.mainWrapper {
+  .firstSection {
+    background: linear-gradient(60deg, #fffeff 20%, #e2eff4);
+    display: flex;
+    flex-direction: column;
+
+    .introduceWrapper {
+      margin: 0 150px;
+      position: relative;
+
+      .searchBarWrapper {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        padding: 0 70px;
+      }
+      @media (max-width: 1300px) {
+        .searchBarWrapper {
+          position: static;
+          padding: 20px 50px;
+        }
+      }
+    }
+  }
+  .secondSection {
+    margin: 0 150px;
+  }
+}

@@ -1,0 +1,36 @@
+$type-colors: (
+  design: (
+    background-color: #eef5f8,
+    text: #247188,
+    border: #247188
+  ),
+  frontend: (
+    background-color: #eaf3ec,
+    text: #2f8c43,
+    border: #2f8c43
+  ),
+  backend: (
+    background-color: #f4f0f9,
+    text: #946cc7,
+    border: #946cc7
+  ),
+  default: (
+    background-color: gray,
+    text: black,
+    border: black
+  )
+);
+
+@mixin color-by-type($type) {
+  // 색상 맵을 가져오고, 기본값은 default 타입을 사용
+  $colors: map-get($type-colors, $type);
+
+  // 기본값이 null이면 default 타입으로 설정
+  @if $colors == null {
+    $colors: map-get($type-colors, 'default');
+  }
+
+  background-color: map-get($colors, background-color);
+  color: map-get($colors, text);
+  border: 1px solid map-get($colors, border);
+}

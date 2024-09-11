@@ -1,0 +1,45 @@
+.reportBox {
+  background-color: rgb(218, 218, 218);
+  width: 550px;
+  height: 400px;
+  position: fixed;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .reportTitle {
+    display: flex;
+    flex-direction: column;
+    width: 490px;
+    .reportRecomfirm {
+      width: 100%;
+      border-bottom: 1px solid black;
+    }
+    .reportText {
+      width: 100%;
+    }
+  }
+  .reportContentBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reportContent {
+      background-color: rgb(218, 218, 218);
+      width: 500px;
+      height: 300px;
+      border: 1px solid black;
+      padding: 5px;
+      resize: none;
+      overflow-y: auto;
+    }
+  }
+  .reportButtonBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reportButton {
+    }
+  }
+}

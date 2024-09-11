@@ -1,0 +1,26 @@
+.parentContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .backgroundContainer {
+    z-index: -1;
+    position: absolute;
+    width: 1350px;
+    height: 1008px;
+    flex-shrink: 0;
+    border-radius: 1350px;
+    background: radial-gradient(
+      46.83% 46.83% at 50% 55.06%,
+      rgba(96, 183, 205, 0.5) 0.48%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+    //추가한부분
+    // left: 50%;
+    // top: 50%;
+    // transform: translateX(-50%) translateY(-400px);
+  }
+}

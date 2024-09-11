@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 import styles from '@/app/login/signup2/page.module.scss'
@@ -9,13 +9,14 @@ import { useRouter } from 'next/navigation'
 import { useSignUpStore } from '@/store/useSignUpStore'
 import axios from 'axios'
 interface FormTypes {
-  email: string
-  emailCode: string
   name: string
   birth: string
 }
 
 const Page = () => {
+  const [email, setEmail] = useState('')
+  const [emailCode, setEmailCode] = useState('')
+
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const methods = useForm<FormTypes>({
     mode: 'onBlur', // 사용자가 필드에서 포커스를 잃을 때 검증이 수행됩니다.
@@ -23,11 +24,57 @@ const Page = () => {
   })
   const router = useRouter()
   const { userSignUp, setUserSignUp } = useSignUpStore()
-  const onSubmit = async (data: FormTypes) => {
-    if (data.emailCode === '') {
-      alert('이메일 인증번호를 입력해주세요.')
+
+  /**
+   * 이메일 전송 함수
+   */
+  const onClickSendEmail = async () => {
+    if (!email) {
+      alert('이메일을 입력해주세요.')
       return
-    } else if (data.name === '') {
+    }
+
+    try {
+      await axios.post(
+        `${apiUrl}/api/auth/register`,
+        { email },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      alert('인증번호가 이메일로 전송되었습니다.')
+    } catch (error) {
+      console.error(error)
+      alert('인증번호 전송 중 오류가 발생했습니다.')
+    }
+  }
+
+  const onClickSendCode = async () => {
+    if (!emailCode) {
+      alert('인증번호를 입력해주세요.')
+      return
+    }
+    try {
+      await axios.post(
+        `${apiUrl}/api/auth/verify`,
+        { email, emailCode },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      )
+      alert('인증이 완료되었습니다.')
+    } catch (error) {
+      console.error(error)
+      alert('인증번호 확인 중 오류가 발생했습니다.')
+    }
+  }
+
+  const onSubmit = async (data: FormTypes) => {
+    if (data.name === '') {
       alert('이름을 입력해주세요.')
       return
     } else if (data.birth === '') {
@@ -37,7 +84,7 @@ const Page = () => {
 
     const combinedData = {
       ...userSignUp, // 첫 번째 페이지 데이터
-      email: data.email,
+      email,
       name: data.name,
       birth: data.birth
     }
@@ -54,7 +101,6 @@ const Page = () => {
       setUserSignUp({
         name: '',
         birth: '',
-        email: '',
         uid: '',
         password: ''
       })
@@ -88,8 +134,13 @@ const Page = () => {
                 type="text"
                 placeholder="이메일을 입력해주세요."
                 validation={{ required: '이메일을 입력해주세요.' }}
+                onChange={e => setEmail(e.target.value)}
               />
-              <label className={styles.sendEmail}>인증번호 전송</label>
+              <label
+                className={styles.sendEmail}
+                onClick={onClickSendEmail}>
+                인증번호 전송
+              </label>
             </div>
             <div className={styles.idTextBox}>
               <label className={styles.textLabel}>이메일 인증번호 입력</label>
@@ -100,8 +151,13 @@ const Page = () => {
                 type="text"
                 placeholder="인증번호 6자리를 입력해주세요."
                 validation={{ required: '인증번호 6자리를 입력해주세요.' }}
+                onChange={e => setEmailCode(e.target.value)}
               />
-              <label className={styles.checkNumber}>확인</label>
+              <label
+                className={styles.checkNumber}
+                onClick={onClickSendCode}>
+                확인
+              </label>
             </div>
             <div className={styles.idTextBox}>
               <label className={styles.textLabel1}>이름</label>

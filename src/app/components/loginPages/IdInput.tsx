@@ -8,6 +8,7 @@ interface IdInputProps {
   type: string
   placeholder?: string
   validation?: RegisterOptions
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const IdInput = ({ name, type, placeholder, validation }: IdInputProps) => {

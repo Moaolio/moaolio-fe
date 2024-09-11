@@ -4,6 +4,7 @@ import Slider from '../components/Slider/Slider'
 import { MainSlides } from '../constants/SliderContents'
 import SearchBar from '@/components/SearchBar/SearchBar'
 import PortfolioBox from './_components/PortfolioBox'
+import BoardBox from './_components/BoardBox'
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <section className={styles.secondSection}>
         <PortfolioBox type="hot" />
         <PortfolioBox type="recent" />
+        <BoardBox />
       </section>
     </div>
   )

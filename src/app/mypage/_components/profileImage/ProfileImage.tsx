@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, ChangeEvent, useState } from 'react'
-import styles from '@/app/mypage/_components/ProfileImage/ProfileImage.module.scss'
+import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.scss'
 import Image from 'next/image'
 
 const ProfileImage = () => {

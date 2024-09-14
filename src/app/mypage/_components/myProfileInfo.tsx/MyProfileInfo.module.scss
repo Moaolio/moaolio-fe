@@ -21,7 +21,7 @@
       font-weight: 400;
       line-height: normal;
     }
-    .uid {
+    .nickname {
       color: #1c1c1c;
       text-align: center;
       font-size: 27px;
@@ -43,7 +43,7 @@
   }
   .userInfoBox {
     display: flex;
-    .userStackBox {
+    .stackBox {
       color: #1c1c1c;
       font-size: 16px;
       font-style: normal;
@@ -53,10 +53,10 @@
       margin-right: 59px;
       display: flex;
       flex-direction: column;
-      .myStackTitle {
+      .stackTitle {
         margin-bottom: 12px;
       }
-      .myStack {
+      .stack {
         margin-bottom: 15px;
         width: 182px;
         height: 57px;
@@ -92,14 +92,15 @@
         margin-top: 54px;
         display: flex;
         flex-direction: column;
-        .contactAddressTitle {
+        .contactInformationTitle {
           color: #1c1c1c;
           font-size: 16px;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
+          margin-bottom: 12px;
         }
-        .contactAddress {
+        .contactInformation {
           width: 378px;
           height: 57px;
           flex-shrink: 0;

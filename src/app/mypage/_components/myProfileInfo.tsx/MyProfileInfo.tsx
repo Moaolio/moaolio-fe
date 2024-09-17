@@ -1,8 +1,7 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from '@/app/mypage/_components/myProfileInfo.tsx/MyProfileInfo.module.scss'
 import Header from '@/components/Header/Header'
-import axios from 'axios'
 
 interface ProfileData {
   positions: string
@@ -13,25 +12,9 @@ interface ProfileData {
   contactInformation: string[]
 }
 
-const MyProfileInfo = () => {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL
-  const [profileData, setProfileData] = useState<ProfileData | null>(null)
-
-  /**
-   * 사용자 정보 불러오기
-   */
-  useEffect(() => {
-    const getProfileData = async () => {
-      try {
-        const response = await axios.get(`${apiUrl}/api/user/`)
-        setProfileData(response.data)
-      } catch (error) {
-        console.error(error)
-      }
-    }
-    getProfileData()
-  }, [])
-
+const MyProfileInfo: React.FC<{ profileData: ProfileData }> = ({
+  profileData
+}) => {
   return (
     <>
       <div className={styles.profileInfoContainer}>

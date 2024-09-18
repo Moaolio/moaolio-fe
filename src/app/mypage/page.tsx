@@ -17,9 +17,9 @@ interface ProfileData {
 const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
   return (
     <div className={styles.profilePage}>
+      <MypageBackgroundImage />
       <ProfileImage profileData={profileData} />
       <MyProfileInfo profileData={profileData} />
-      <MypageBackgroundImage />
     </div>
   )
 }

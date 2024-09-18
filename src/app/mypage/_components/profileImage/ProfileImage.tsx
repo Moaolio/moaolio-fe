@@ -51,9 +51,11 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
 
   const handleEdit = () => {
     setEditProfile(true)
+    console.log('Edit Mode:', true)
   }
   const handleEditComplete = () => {
     setEditProfile(false)
+    console.log('Edit Mode:', false)
   }
 
   return (
@@ -75,7 +77,6 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
           ref={fileInputRef}
         />
       </div>
-
       <div className={styles.profileImageBtn}>
         {editProfile ? (
           <>

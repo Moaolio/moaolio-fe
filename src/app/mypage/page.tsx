@@ -3,7 +3,7 @@ import styles from '@/app/mypage/page.module.scss'
 import ProfileImage from './_components/profileImage/ProfileImage'
 import MyProfileInfo from './_components/myProfileInfo.tsx/MyProfileInfo'
 import axios from 'axios'
-
+import MypageBackgroundImage from '@/app/components/mypage/MypageBackgroundImage'
 interface ProfileData {
   positions: string
   nickname: string
@@ -11,6 +11,7 @@ interface ProfileData {
   stack: string[]
   experience: string
   contactInformation: string[]
+  profileImageUrl: string
 }
 
 const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
@@ -18,6 +19,7 @@ const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
     <div className={styles.profilePage}>
       <ProfileImage profileData={profileData} />
       <MyProfileInfo profileData={profileData} />
+      <MypageBackgroundImage />
     </div>
   )
 }
@@ -43,7 +45,9 @@ export const getDataProps = async () => {
           introduction: '',
           stack: [],
           experience: '',
-          contactInformation: []
+          contactInformation: [],
+          profileImageUrl:
+            'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
         }
       }
     }

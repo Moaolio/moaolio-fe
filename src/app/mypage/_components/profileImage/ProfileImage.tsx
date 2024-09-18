@@ -11,6 +11,7 @@ interface ProfileData {
   stack: string[]
   experience: string
   contactInformation: string[]
+  profileImageUrl: string
 }
 
 const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
@@ -19,8 +20,10 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
   const [editProfile, setEditProfile] = useState(false)
   const [preview, setPreview] = useState<string | null>(null)
   const [image, setImage] = useState<string>(
-    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
+    profileData?.profileImageUrl ||
+      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   )
+
   //파일 입력 필드 참조??
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -88,18 +91,28 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
             </button>
           </>
         ) : (
-          <>
+          <div className={styles.nicknameBox}>
             <span className={styles.nickname}>
               {profileData?.nickname || '닉네임 없음'}
             </span>
-
-            <button
-              className={styles.editButton}
-              onClick={handleEdit}>
-              내 정보 수정
-            </button>
-            <button className={styles.editButton}>Log out</button>
-          </>
+            <span className={styles.positionExperience}>
+              {profileData?.positions || '포지션 없음'} |{' '}
+              {profileData?.experience || '경력 없음'}
+            </span>
+            <button className={styles.myButton}>나의 프로필</button>
+            <button className={styles.myButton}>나의 포트폴리오</button>
+            <button className={styles.myButton}>스크랩한 포트폴리오</button>
+            <button className={styles.myButton}>내가 작성한 글</button>
+            <button className={styles.myButton}>내가 작성한 댓글</button>
+            <div className={styles.editBox}>
+              <button
+                className={styles.editButton}
+                onClick={handleEdit}>
+                내 정보 수정
+              </button>{' '}
+              | <button className={styles.editButton}>Log out</button>
+            </div>
+          </div>
         )}
       </div>
     </div>

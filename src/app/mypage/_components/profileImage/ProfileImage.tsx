@@ -2,7 +2,6 @@
 import React, { useRef, ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.scss'
 import Image from 'next/image'
-import BackgroundImage from '@/app/mypage/_components/BackgroundImage'
 
 interface ProfileData {
   positions: string
@@ -61,7 +60,6 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
   return (
     <div className={styles.profileImageContainer}>
       <div className={styles.profileImage}>
-        <BackgroundImage />
         <Image
           src={preview || image}
           alt="Profile"

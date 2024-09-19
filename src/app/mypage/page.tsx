@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from '@/app/mypage/page.module.scss'
 import ProfileImage from './_components/profileImage/ProfileImage'
-import MyProfileInfo from './_components/myProfileInfo.tsx/MyProfileInfo'
+import MyProfileInfo from './_components/myProfileInfo/MyProfileInfo'
 import axios from 'axios'
 import MypageBackgroundImage from '@/app/components/mypage/MypageBackgroundImage'
+import Header from '@/components/Header/Header'
+import BackgroundImage from '@/app/mypage/_components/BackgroundImage'
 interface ProfileData {
   positions: string
   nickname: string
@@ -16,11 +18,18 @@ interface ProfileData {
 
 const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
   return (
-    <div className={styles.profilePage}>
-      <MypageBackgroundImage />
-      <ProfileImage profileData={profileData} />
-      <MyProfileInfo profileData={profileData} />
-    </div>
+    <>
+      <Header />
+      <div className={styles.profilePage}>
+        <BackgroundImage />
+        <MypageBackgroundImage />
+
+        <div className={styles.pageComponants}>
+          <ProfileImage profileData={profileData} />
+          <MyProfileInfo profileData={profileData} />
+        </div>
+      </div>
+    </>
   )
 }
 

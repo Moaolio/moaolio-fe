@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
-import styles from '@/app/mypage/_components/myProfileInfo.tsx/MyProfileInfo.module.scss'
-import Header from '@/components/Header/Header'
+import styles from '@/app/mypage/_components/myProfileInfo/MyProfileInfo.module.scss'
 
 interface ProfileData {
   positions: string

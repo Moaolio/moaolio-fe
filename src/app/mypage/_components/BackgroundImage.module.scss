@@ -1,5 +1,5 @@
 .backgroundContainer {
-  z-index: -2;
+  z-index: 1;
   position: absolute;
   width: 962px;
   height: 902px;
@@ -10,5 +10,6 @@
     rgba(96, 183, 205, 0.5) 0.48%,
     rgba(255, 255, 255, 0) 100%
   );
-  margin-right: 150px;
+  margin-right: 750px;
+  transform: translateY(-300px);
 }

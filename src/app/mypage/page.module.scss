@@ -4,4 +4,10 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  margin-top: 133px;
+
+  .pageComponants {
+    z-index: 2;
+    display: flex;
+  }
 }

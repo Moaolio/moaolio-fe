@@ -1,6 +1,27 @@
 @import 'utils';
 
-.inputStyle {
-  flex: 1;
-  @include common-input-styles;
+.inputWrapper {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 19px;
+    border-radius: 10px;
+    background-color: #f5f6f8;
+
+    @include common-input-styles(18px, 600, 21.48px);
+
+    &::placeholder {
+      color: #acacac;
+    }
+  }
+
+  .errorMessage {
+    position: absolute;
+    color: red;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.45px;
+    margin: 3px 10px;
+  }
 }

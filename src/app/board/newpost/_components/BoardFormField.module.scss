@@ -1,21 +1,116 @@
 @import 'utils';
 
 .boardFormFieldWrapper {
-  margin: 0 auto;
-  width: 832px;
-
-  label {
-    font-size: large;
-    font-weight: 400;
-    line-height: 44px;
-    margin-right: 10px;
-  }
+  margin: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
 
   .boardFormTitleContainer {
-    @include flexLayout(row, center, center);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 29px 26px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    overflow: hidden;
+
+    .boardFormSelectContainer {
+      @include flexLayout($justifyContent: flex-start, $gap: 17px);
+    }
+
+    .typeWrapper {
+      flex: 1;
+      height: 35px;
+
+      @include flexLayout($justifyContent: flex-start, $gap: 40px);
+      border-bottom: 1px solid #dbdbdb;
+      padding: 5px 20px;
+      margin: 0;
+
+      .radioContainer {
+        @include flexLayout($justifyContent: flex-start, $gap: 5px);
+        color: #acacac;
+
+        label {
+          font-size: 18px;
+          font-weight: 600;
+          line-height: 21.48px;
+          cursor: pointer;
+        }
+
+        .activeLabel {
+          color: #333;
+        }
+
+        input[type='radio'] {
+          appearance: none;
+          width: 15px;
+          height: 15px;
+          border: 1.5px solid #acacac;
+          border-radius: 1px;
+          position: relative;
+          cursor: pointer;
+
+          &:checked {
+            border-color: #333;
+          }
+
+          &:checked::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 11px;
+            height: 11px;
+            background-image: url('/icons/check.svg'); /* 체크 이미지 경로 */
+            background-size: cover; /* 이미지 크기에 맞게 조정 */
+            background-position: center; /* 이미지 중앙 정렬 */
+            transform: translate(-50%, -50%); /* 이미지 중앙 위치 조정 */
+          }
+        }
+      }
+    }
+
+    .fieldWrapper {
+      position: relative;
+      flex: 1;
+      height: 35px;
+      padding: 5px 20px;
+      border-bottom: 1px solid #dbdbdb;
+
+      select {
+        width: 100%;
+        border: none;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &.gray {
+          color: #acacac;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .errorMessage {
+        position: absolute;
+        color: red;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17.45px;
+        margin: 8px -5px;
+      }
+    }
   }
-  .line {
-    height: 1px;
-    background-color: #dadada;
+
+  .boardFormContentContainer {
+    height: 435px;
+    border: 1px solid #dbdbdb;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 12px 0;
   }
 }

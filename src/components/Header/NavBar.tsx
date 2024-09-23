@@ -6,8 +6,8 @@ const NavBar = () => {
   const links = [
     { href: '/', name: '소개' },
     { href: '/', name: '포트폴리오 모아보기' },
-    { href: '/', name: '게시판' },
-    { href: '/', name: '마이페이지' },
+    { href: '/board', name: '게시판' },
+    { href: '/mypage', name: '마이페이지' },
     { href: '/', name: '고객센터' }
   ]
   return (
@@ -24,9 +24,9 @@ const NavBar = () => {
         ))}
       </ul>
       <div className={styles.authArea}>
-        <Link href="/">로그인</Link>
+        <Link href="/login/signin">로그인</Link>
         <div className={styles.bar}>|</div>
-        <Link href="/">회원가입</Link>
+        <Link href="/login/signup1">회원가입</Link>
       </div>
     </nav>
   )

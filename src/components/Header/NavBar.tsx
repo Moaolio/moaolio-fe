@@ -6,7 +6,7 @@ const NavBar = () => {
   const links = [
     { href: '/', name: '소개' },
     { href: '/', name: '포트폴리오 모아보기' },
-    { href: '/board', name: '게시판' },
+    { href: '/community', name: '게시판' },
     { href: '/mypage', name: '마이페이지' },
     { href: '/', name: '고객센터' }
   ]

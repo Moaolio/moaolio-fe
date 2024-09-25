@@ -14,10 +14,17 @@
     outline: none;
   }
 
+  .communitySearchBar {
+    background-color: #f0f0f080;
+    border: 1px solid #cccccc;
+    height: 30px;
+    padding: 0 15px 0 35px;
+  }
+
   .iconContainer {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    transform: translateY(-40%);
     display: flex;
     align-items: center;
     gap: 10px;
@@ -30,5 +37,9 @@
     .searchIcon {
       @include flexLayout;
     }
+  }
+
+  .communityIconContainer {
+    padding: 0 8px;
   }
 }

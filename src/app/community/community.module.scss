@@ -1,0 +1,105 @@
+@import 'utils';
+
+.layoutWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(
+      circle closest-corner at 3% 25%,
+      #a0cdd933 20%,
+      #0000
+    ),
+    radial-gradient(circle closest-corner at 97% 90%, #a0cdd933 20%, #fff);
+}
+
+.mainWrapper {
+  height: 100%;
+}
+
+.boardWrapper {
+  width: 75%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.boardContainer {
+  height: 88%;
+
+  padding: 180px 0 0;
+  display: flex;
+  flex-direction: column;
+
+  .boardHeader {
+    display: flex;
+    justify-content: space-between;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 27.45px;
+    border-bottom: 2px solid #343434;
+    padding: 15px 0;
+
+    .headerLeftSection {
+      @include flexLayout($gap: 7px);
+    }
+
+    .headerRightSection {
+      @include flexLayout($gap: 15px);
+
+      a {
+        text-decoration: none;
+        color: #2a6c8d;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16.71px;
+        border: 1px solid #a7cadb;
+        border-radius: 40px;
+        background-color: #f1f7fa;
+        padding: 5px 15px;
+
+        &:hover {
+          background-color: #d8ebf5;
+        }
+      }
+    }
+  }
+  .boardList {
+    .boardListItem {
+      display: grid;
+      border-bottom: 0.5px solid #b6b6b6;
+      grid-template-columns: 1fr 6fr 1.3fr;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 15.51px;
+      min-height: 60px;
+      text-decoration: none;
+      color: #4d4d4d;
+    }
+
+    a {
+      &:hover {
+        background-color: #f0f0f080;
+      }
+    }
+
+    .notice {
+      border-radius: 13px;
+      background-color: #5f5f5f;
+      padding: 5px 13px;
+      color: #f9f9f9;
+    }
+
+    .postCommon {
+      margin: auto;
+    }
+
+    .postId,
+    .postDate {
+      font-weight: 400;
+    }
+    .postTitle {
+      padding: 0 50px;
+      font-family: Pretendard;
+      margin: auto 0;
+    }
+  }
+}

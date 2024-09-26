@@ -6,7 +6,7 @@ import styles from '@/app/login/signin/page.module.scss'
 import LoginBackgroundImage from '@/app/components/loginPages/LoginBackgroundImage'
 import Link from 'next/link'
 import { FormProvider, useForm, SubmitHandler } from 'react-hook-form'
-import axios, { AxiosError, AxiosResponse } from 'axios'
+import axios from 'axios'
 import { useRouter } from 'next/navigation'
 
 interface FormTypes {

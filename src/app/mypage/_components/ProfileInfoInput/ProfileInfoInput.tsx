@@ -4,18 +4,15 @@ import styles from '@/app/mypage/_components/ProfileInfoInput/ProfileInfoInput.m
 import { useFormContext, RegisterOptions } from 'react-hook-form'
 
 interface ProfileInfoInputProps {
-  uid: string
+  name: string
   type: string
-  introduction: string
-  experience: string
-
   placeholder?: string
   validation?: RegisterOptions
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const ProfileInfoInput: React.FC<ProfileInfoInputProps> = ({
-  uid,
+  name,
   type,
   placeholder,
   validation
@@ -24,7 +21,7 @@ const ProfileInfoInput: React.FC<ProfileInfoInputProps> = ({
     register,
     formState: { errors, isSubmitted }
   } = useFormContext()
-  const errorMessage = errors[uid]?.message as string | undefined
+  const errorMessage = errors[name]?.message as string | undefined
 
   return (
     <>
@@ -32,9 +29,9 @@ const ProfileInfoInput: React.FC<ProfileInfoInputProps> = ({
         className={styles.ProfileInfoInputStyle}
         type={type}
         placeholder={placeholder}
-        {...register(uid, validation)}
+        {...register(name, validation)}
       />
-      {isSubmitted && errors[uid] && (
+      {isSubmitted && errors[name] && (
         <div className={styles.errorMessage}>{errorMessage}</div>
       )}
     </>

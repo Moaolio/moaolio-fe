@@ -3,11 +3,13 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 133px;
-
+  width: auto;
+  padding-left: 251px;
   .pageComponants {
     z-index: 2;
     display: flex;
+    justify-content: flex-start;
   }
 }

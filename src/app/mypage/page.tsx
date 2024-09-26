@@ -6,6 +6,7 @@ import axios from 'axios'
 import MypageBackgroundImage from '@/app/components/mypage/MypageBackgroundImage'
 import Header from '@/components/Header/Header'
 import BackgroundImage from '@/app/mypage/_components/BackgroundImage'
+
 interface ProfileData {
   positions: string
   nickname: string
@@ -23,7 +24,6 @@ const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
       <div className={styles.profilePage}>
         <BackgroundImage />
         <MypageBackgroundImage />
-
         <div className={styles.pageComponants}>
           <ProfileImage profileData={profileData} />
           <MyProfileInfo profileData={profileData} />

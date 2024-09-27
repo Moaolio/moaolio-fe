@@ -1,0 +1,64 @@
+@import 'utils';
+
+.newPostWrapper {
+  margin: 0 auto;
+  width: 832px;
+
+  form {
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 50px;
+  }
+
+  .boardInnerTop {
+    @include flexLayout($justifyContent: space-between);
+    border-bottom: 2px solid #343434;
+    padding-bottom: 14px;
+
+    h2 {
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 27.45px;
+    }
+  }
+
+  .buttonSection {
+    @include flexLayout($gap: 10px);
+
+    button,
+    label {
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 19.09px;
+      padding: 9px 12px;
+      border: 0.5px solid;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button {
+      background-color: #f1f7fa;
+      border-color: #a7cadb;
+      color: #2a6c8d;
+
+      &:hover {
+        background-color: #e0eef2;
+      }
+    }
+
+    label {
+      border-color: #d6d6d6;
+      background-color: #f5f6f8;
+      color: #686868;
+
+      &:hover {
+        background-color: rgb(222, 222, 222);
+      }
+    }
+
+    input {
+      display: none;
+    }
+  }
+}

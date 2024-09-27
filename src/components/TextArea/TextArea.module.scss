@@ -2,8 +2,12 @@
 
 .textareaStyle {
   width: 100%;
+  height: 100%;
   resize: none;
-  overflow: hidden;
-  margin-bottom: 50px;
-  @include common-input-styles(12px);
+  padding: 20px 40px;
+  @include common-input-styles(16px, 400, 19px);
+
+  &::placeholder {
+    color: #acacac;
+  }
 }

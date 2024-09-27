@@ -1,0 +1,149 @@
+.profileInfoContainer {
+  width: 619x;
+  height: 676px;
+  margin-left: 86px;
+  display: flex;
+  padding-top: 94px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  .userBox {
+    display: flex;
+    flex-direction: column;
+    .nicknameSpan {
+      color: #1c1c1c;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-bottom: 12px;
+    }
+    .inroductionSpan {
+      color: #1c1c1c;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-top: 44px;
+      margin-bottom: 12px;
+    }
+  }
+  .myStackBox {
+    margin-top: 58px;
+    margin-right: 6px;
+    .stackSpan {
+      display: flex;
+    }
+  }
+  .profileUser {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: right;
+    flex-direction: column;
+
+    .positions {
+      color: #1c1c1c;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    .nickname {
+      color: #1c1c1c;
+      text-align: center;
+      font-size: 27px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      padding-top: 4px;
+      padding-bottom: 33px;
+    }
+    .introduction {
+      color: #666;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+      letter-spacing: -0.45px;
+      margin-bottom: 75px;
+    }
+  }
+  .userInfoBox {
+    display: flex;
+    .stackBox {
+      color: #1c1c1c;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: auto;
+      margin-right: 59px;
+      display: flex;
+      flex-direction: column;
+      .stackTitle {
+        margin-bottom: 12px;
+      }
+      .stack {
+        margin-bottom: 15px;
+        width: 182px;
+        height: 57px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding-left: 18px;
+      }
+    }
+    .ExperienceBox {
+      display: flex;
+      flex-direction: column;
+      .experienceTitle {
+        color: #1c1c1c;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-bottom: 12px;
+      }
+      .experience {
+        width: 378px;
+        height: 57px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding-left: 18px;
+      }
+      .contactBox {
+        margin-top: 54px;
+        display: flex;
+        flex-direction: column;
+        .contactInformationTitle {
+          color: #1c1c1c;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          margin-bottom: 12px;
+        }
+        .contactInformation {
+          width: 378px;
+          height: 57px;
+          flex-shrink: 0;
+          border-radius: 10px;
+          border: 1px solid #dbdbdb;
+          background: #fff;
+          display: flex;
+          align-items: center;
+          padding-left: 18px;
+          margin-bottom: 13px;
+        }
+      }
+    }
+  }
+}

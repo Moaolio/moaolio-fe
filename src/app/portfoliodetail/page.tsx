@@ -3,7 +3,6 @@ import React from 'react'
 import styles from '@/app/portfoliodetail/page.module.scss'
 import PortfolioComment from '@/app/components/portfolioComment/PortfolioComment'
 import { FormProvider, useForm } from 'react-hook-form'
-import TextInput from '@/app/components/TextInput'
 
 interface FormValues {
   content: string
@@ -24,14 +23,6 @@ const Page = () => {
           <PortfolioComment />
         </div>
         <div className={styles.writeCommentBox}>
-          <FormProvider {...methods}>
-            <TextInput
-              // className={styles.textInput}
-              name="content"
-              type="text"
-              validation={{ required: true }}
-            />
-          </FormProvider>
           <button className={styles.postButton}>btn</button>
         </div>
       </div>

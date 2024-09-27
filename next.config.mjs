@@ -9,6 +9,9 @@ const __dirname = path.dirname(__filename)
 const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'src/styles')]
+  },
+  images: {
+    domains: ['cdn.pixabay.com'] // 허용할 도메인 추가
   }
 }
 

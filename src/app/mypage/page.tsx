@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from '@/app/mypage/page.module.scss'
 import ProfileImage from './_components/profileImage/ProfileImage'
-import MyProfileInfo from './_components/myProfileInfo/MyProfileInfo'
+import MyProfileInfo from '@/app/mypage/_components/myProfileInfo/MyProfileInfo'
 import axios from 'axios'
-import MypageBackgroundImage from '@/app/components/mypage/MypageBackgroundImage'
+import MyPageArrow from '@/assets/icons/MypageArrow'
 import Header from '@/components/Header/Header'
 import BackgroundImage from '@/app/mypage/_components/BackgroundImage'
 
@@ -23,7 +23,7 @@ const Page: React.FC<{ profileData: ProfileData }> = ({ profileData }) => {
       <Header />
       <div className={styles.profilePage}>
         <BackgroundImage />
-        <MypageBackgroundImage />
+        <MyPageArrow />
         <div className={styles.pageComponants}>
           <ProfileImage profileData={profileData} />
           <MyProfileInfo profileData={profileData} />

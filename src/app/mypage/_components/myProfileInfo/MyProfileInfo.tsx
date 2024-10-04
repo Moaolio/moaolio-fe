@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
 import styles from '@/app/mypage/_components/myProfileInfo/MyProfileInfo.module.scss'
-import ProfileInfoInput from '../ProfileInfoInput/ProfileInfoInput'
+import ProfileInfoInput from '@/app/mypage/_components/ProfileInfoInput/ProfileInfoInput'
 import { FormProvider, useForm } from 'react-hook-form'
 import PlusIcon from '@/assets/icons/PlusIcon'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
+import StackModal from '../stackModal/StackModal'
 
 interface ProfileData {
   positions: string
@@ -19,43 +20,53 @@ const MyProfileInfo: React.FC<{
   profileData: ProfileData
 }> = ({ profileData }) => {
   const { editProfile } = useMypagUpdateStore()
-
+  const [openModal, setOpenModal] = useState(false)
   const methods = useForm<ProfileData>({
     mode: 'onBlur',
     criteriaMode: 'all',
     defaultValues: profileData // 초기값 설정
   })
 
+  const stackModalOpen = () => {
+    console.log('모달 열림')
+    setOpenModal(true)
+  }
+  const stackModalClose = () => {
+    console.log('모달 닫힘')
+    setOpenModal(false)
+  }
+
   return (
     <>
+      {openModal && <StackModal stackModalClose={stackModalClose} />}
       <div className={styles.profileInfoContainer}>
         {editProfile ? (
-          <>
-            <FormProvider {...methods}>
-              <div className={styles.userBox}>
-                <span className={styles.nicknameSpan}>닉네임</span>
-                <ProfileInfoInput
-                  name="nickname"
-                  type="text"
-                  placeholder="닉네임을 입력해주세요."
-                  validation={{ required: '닉네임을 입력해주세요.' }}
-                />
-                <span className={styles.inroductionSpan}>한줄 소개</span>
-                <ProfileInfoInput
-                  name="introduction"
-                  type="text"
-                  placeholder="한줄소개를 입력해주세요."
-                  validation={{ required: '한줄소개를 입력해주세요.' }}
-                />
-              </div>
-              <div className={styles.myStackBox}>
-                <span className={styles.stackSpan}>
-                  나의 스택목록
+          <FormProvider {...methods}>
+            <div className={styles.userBox}>
+              <span className={styles.nicknameSpan}>닉네임</span>
+              <ProfileInfoInput
+                name="nickname"
+                type="text"
+                placeholder="닉네임을 입력해주세요."
+                validation={{ required: '닉네임을 입력해주세요.' }}
+              />
+              <span className={styles.inroductionSpan}>한줄 소개</span>
+              <ProfileInfoInput
+                name="introduction"
+                type="text"
+                placeholder="한줄소개를 입력해주세요."
+                validation={{ required: '한줄소개를 입력해주세요.' }}
+              />
+            </div>
+            <div className={styles.myStackBox}>
+              <span className={styles.stackSpan}>
+                나의 스택목록
+                <div onClick={stackModalOpen}>
                   <PlusIcon />
-                </span>
-              </div>
-            </FormProvider>
-          </>
+                </div>
+              </span>
+            </div>
+          </FormProvider>
         ) : (
           <>
             <div className={styles.profileUser}>
@@ -121,5 +132,4 @@ const MyProfileInfo: React.FC<{
     </>
   )
 }
-
 export default MyProfileInfo

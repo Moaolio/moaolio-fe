@@ -33,6 +33,30 @@
     margin-right: 6px;
     .stackSpan {
       display: flex;
+      margin-bottom: 14px;
+    }
+    .editStackList {
+      display: flex;
+      .editStack {
+        width: 198px;
+        height: 57px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        list-style: none;
+        color: #686868;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        padding-left: 24px;
+        margin-right: 12px;
+      }
     }
   }
   .profileUser {

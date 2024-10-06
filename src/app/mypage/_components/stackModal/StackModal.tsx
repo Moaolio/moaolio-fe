@@ -3,11 +3,15 @@ import styles from '@/app/mypage/_components/stackModal/StackModal.module.scss'
 
 interface StackModalProps {
   stackModalClose: () => void
+  handleStackSelected: (stack: string[]) => void
 }
 
-const StackModal: React.FC<StackModalProps> = ({ stackModalClose }) => {
+const StackModal: React.FC<StackModalProps> = ({
+  stackModalClose,
+  handleStackSelected
+}) => {
   const [selectedStacks, setSelectedStacks] = useState<string[]>([])
-  const [stacks, setStacks] = useState<string[]>([
+  const [stacks] = useState<string[]>([
     'HTML',
     'CSS',
     'JavaScript',
@@ -39,6 +43,7 @@ const StackModal: React.FC<StackModalProps> = ({ stackModalClose }) => {
   }
 
   const completeClick = () => {
+    handleStackSelected(selectedStacks)
     stackModalClose()
   }
 

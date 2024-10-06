@@ -7,7 +7,7 @@ import PlusIcon from '@/assets/icons/PlusIcon'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import StackModal from '../stackModal/StackModal'
 
-interface ProfileData {
+interface ProfileDataType {
   positions: string
   nickname: string
   introduction: string
@@ -17,11 +17,15 @@ interface ProfileData {
 }
 
 const MyProfileInfo: React.FC<{
-  profileData: ProfileData
+  profileData: ProfileDataType
 }> = ({ profileData }) => {
   const { editProfile } = useMypagUpdateStore()
   const [openModal, setOpenModal] = useState(false)
-  const methods = useForm<ProfileData>({
+  const [selectedStacks, setSelectedStacks] = useState<string[]>(
+    profileData?.stack || []
+  )
+
+  const methods = useForm<ProfileDataType>({
     mode: 'onBlur',
     criteriaMode: 'all',
     defaultValues: profileData // 초기값 설정
@@ -36,9 +40,18 @@ const MyProfileInfo: React.FC<{
     setOpenModal(false)
   }
 
+  const handleStackSelected = (stacks: string[]) => {
+    setSelectedStacks(stacks)
+  }
+
   return (
     <>
-      {openModal && <StackModal stackModalClose={stackModalClose} />}
+      {openModal && (
+        <StackModal
+          stackModalClose={stackModalClose}
+          handleStackSelected={handleStackSelected}
+        />
+      )}
       <div className={styles.profileInfoContainer}>
         {editProfile ? (
           <FormProvider {...methods}>
@@ -54,8 +67,8 @@ const MyProfileInfo: React.FC<{
               <ProfileInfoInput
                 name="introduction"
                 type="text"
-                placeholder="한줄소개를 입력해주세요."
-                validation={{ required: '한줄소개를 입력해주세요.' }}
+                placeholder="한줄 소개를 입력해주세요."
+                validation={{ required: '한줄 소개를 입력해주세요.' }}
               />
             </div>
             <div className={styles.myStackBox}>
@@ -65,6 +78,19 @@ const MyProfileInfo: React.FC<{
                   <PlusIcon />
                 </div>
               </span>
+              <ul className={styles.editStackList}>
+                {selectedStacks.length ? (
+                  selectedStacks.map((stack, index) => (
+                    <li
+                      key={index}
+                      className={styles.editStack}>
+                      {stack}
+                    </li>
+                  ))
+                ) : (
+                  <li className={styles.editStack}>스택 없음</li>
+                )}
+              </ul>
             </div>
           </FormProvider>
         ) : (

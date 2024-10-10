@@ -5,25 +5,19 @@ import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import ProfileImageButton from '@/assets/icons/ProfileImageButton'
 
-interface ProfileData {
-  positions: string
-  nickname: string
-  introduction: string
-  stack: string[]
-  experience: string
-  contactInformation: string[]
-  profileImageUrl: string
-}
-
-const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
-  profileData
-}) => {
-  const { editProfile, clickEditProfile } = useMypagUpdateStore()
+const ProfileImage = () => {
+  const {
+    mypageData: {
+      editProfile,
+      profileImageStr,
+      positions,
+      nickname,
+      experience
+    },
+    clickEditProfile,
+    setProfileData
+  } = useMypagUpdateStore()
   const [preview, setPreview] = useState<string | null>(null)
-  const [image, setImage] = useState<string>(
-    profileData?.profileImageUrl ||
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
-  )
 
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -32,7 +26,9 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
     if (file) {
       const reader = new FileReader()
       reader.onloadend = () => {
-        setImage(reader.result as string)
+        setProfileData({
+          profileImageStr: reader.result as string // 프로필 이미지 업데이트
+        })
         setPreview(reader.result as string)
       }
       reader.readAsDataURL(file)
@@ -48,7 +44,7 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
       className={`${styles.profileImageContainer} ${editProfile ? styles.noShadow : ''}`}>
       <div className={styles.profileImage}>
         <Image
-          src={preview || image}
+          src={preview || profileImageStr}
           alt="Profile"
           className={styles.profileImagePreview}
           width={167}
@@ -73,12 +69,12 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
               </div>
               <div className={styles.editProfileBox}>
                 <div className={styles.profileNickname}>
-                  {profileData?.nickname || '닉네임 없음'}
+                  {nickname || '닉네임 없음'}
                 </div>
                 <div className={styles.profilePositionExperience}>
-                  {profileData?.positions || '포지션 없음'}
+                  {positions || '포지션 없음'}
                   {' | '}
-                  {profileData?.experience || '경력 없음'}
+                  {experience || '경력 없음'}
                 </div>
               </div>
               <button
@@ -92,11 +88,10 @@ const ProfileImage: React.FC<{ profileData: ProfileData }> = ({
           <>
             <div className={styles.nicknameBox}>
               <span className={styles.nickname}>
-                {profileData?.nickname || '닉네임 없음'}
+                {nickname || '닉네임 없음'}
               </span>
               <span className={styles.positionExperience}>
-                {profileData?.positions || '포지션 없음'} |{' '}
-                {profileData?.experience || '경력 없음'}
+                {positions || '포지션 없음'} | {experience || '경력 없음'}
               </span>
               <button className={styles.myButton}>나의 프로필</button>
               <button className={styles.myButton}>나의 포트폴리오</button>

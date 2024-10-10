@@ -7,28 +7,24 @@ import PlusIcon from '@/assets/icons/PlusIcon'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import StackModal from '../stackModal/StackModal'
 
-interface ProfileDataType {
-  positions: string
-  nickname: string
-  introduction: string
-  stack: string[]
-  experience: string
-  contactInformation: string[]
-}
-
-const MyProfileInfo: React.FC<{
-  profileData: ProfileDataType
-}> = ({ profileData }) => {
-  const { editProfile } = useMypagUpdateStore()
+const MyProfileInfo = () => {
+  const {
+    mypageData: {
+      editProfile,
+      positions,
+      nickname,
+      introduction,
+      stack,
+      experience,
+      contactInformation
+    }
+  } = useMypagUpdateStore()
   const [openModal, setOpenModal] = useState(false)
-  const [selectedStacks, setSelectedStacks] = useState<string[]>(
-    profileData?.stack || []
-  )
+  const [selectedStacks, setSelectedStacks] = useState<string[]>(stack || [])
 
-  const methods = useForm<ProfileDataType>({
+  const methods = useForm({
     mode: 'onBlur',
-    criteriaMode: 'all',
-    defaultValues: profileData // 초기값 설정
+    criteriaMode: 'all'
   })
 
   const stackModalOpen = () => {
@@ -97,21 +93,21 @@ const MyProfileInfo: React.FC<{
           <>
             <div className={styles.profileUser}>
               <span className={styles.positions}>
-                {profileData?.positions || '포지션 없음'}
+                {positions || '포지션 없음'}
               </span>
               <span className={styles.nickname}>
-                {profileData?.nickname || '닉네임 없음'}
+                {nickname || '닉네임 없음'}
               </span>
               <span className={styles.introduction}>
-                {profileData?.introduction || '자기소개 없음'}
+                {introduction || '자기소개 없음'}
               </span>
             </div>
             <div className={styles.userInfoBox}>
               <div className={styles.stackBox}>
                 <span className={styles.stackTitle}>나의 스택목록</span>
                 <ul>
-                  {profileData?.stack.length ? (
-                    profileData.stack.map((stack, index) => (
+                  {stack.length ? (
+                    stack.map((stack, index) => (
                       <li
                         key={index}
                         className={styles.stack}>
@@ -126,23 +122,21 @@ const MyProfileInfo: React.FC<{
               <div className={styles.ExperienceBox}>
                 <span className={styles.experienceTitle}>경력</span>
                 <div className={styles.experience}>
-                  {profileData?.experience || '경력 정보 없음'}
+                  {experience || '경력 정보 없음'}
                 </div>
                 <div className={styles.contactBox}>
                   <span className={styles.contactInformationTitle}>
                     컨택 가능 주소
                   </span>
                   <ul>
-                    {profileData?.contactInformation.length ? (
-                      profileData.contactInformation.map(
-                        (contactInformation, index) => (
-                          <li
-                            key={index}
-                            className={styles.contactInformation}>
-                            {contactInformation}
-                          </li>
-                        )
-                      )
+                    {contactInformation.length ? (
+                      contactInformation.map((contactInformation, index) => (
+                        <li
+                          key={index}
+                          className={styles.contactInformation}>
+                          {contactInformation}
+                        </li>
+                      ))
                     ) : (
                       <li className={styles.contactInformation}>
                         연락처 정보 없음

@@ -87,6 +87,42 @@ const MyProfileInfo = () => {
                   <li className={styles.editStack}>스택 없음</li>
                 )}
               </ul>
+              <div className={styles.experienceBox}>
+                <div>
+                  <span className={styles.contactInformationSpan}>
+                    컨택 가능 주소
+                  </span>
+                  <ul className={styles.editContactInformationList}>
+                    <ProfileInfoInput
+                      name="contactInformation"
+                      type="text"
+                      placeholder="컨택 가능한 주소를 입력해주세요."
+                      validation={{
+                        required: '컨택 가능한 주소를 입력해주세요.'
+                      }}
+                    />
+                    <ProfileInfoInput
+                      name="contactInformation"
+                      type="text"
+                      placeholder="컨택 가능한 주소를 입력해주세요."
+                      validation={{
+                        required: '컨택 가능한 주소를 입력해주세요.'
+                      }}
+                    />
+                  </ul>
+                </div>
+                <div>
+                  <span className={styles.experienceSpan}>경력 (몇 년)</span>
+                  <ProfileInfoInput
+                    name="experienceSpan"
+                    type="text"
+                    placeholder="경력 (몇 년)를 입력해주세요."
+                    validation={{
+                      required: '경력 (몇 년)를 입력해주세요.'
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </FormProvider>
         ) : (

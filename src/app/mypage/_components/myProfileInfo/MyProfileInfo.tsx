@@ -6,6 +6,12 @@ import { FormProvider, useForm } from 'react-hook-form'
 import PlusIcon from '@/assets/icons/PlusIcon'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import StackModal from '../stackModal/StackModal'
+interface FormValues {
+  nickname: string
+  introduction: string
+  contactInformation: string[]
+  experienceSpan: string
+}
 
 const MyProfileInfo = () => {
   const {
@@ -17,12 +23,13 @@ const MyProfileInfo = () => {
       stack,
       experience,
       contactInformation
-    }
+    },
+    setProfileData
   } = useMypagUpdateStore()
   const [openModal, setOpenModal] = useState(false)
   const [selectedStacks, setSelectedStacks] = useState<string[]>(stack || [])
 
-  const methods = useForm({
+  const methods = useForm<FormValues>({
     mode: 'onBlur',
     criteriaMode: 'all'
   })
@@ -40,6 +47,13 @@ const MyProfileInfo = () => {
     setSelectedStacks(stacks)
   }
 
+  const handleFormSubmit = (data: FormValues) => {
+    setProfileData({
+      ...data,
+      stack: selectedStacks
+    })
+  }
+
   return (
     <>
       {openModal && (
@@ -51,79 +65,81 @@ const MyProfileInfo = () => {
       <div className={styles.profileInfoContainer}>
         {editProfile ? (
           <FormProvider {...methods}>
-            <div className={styles.userBox}>
-              <span className={styles.nicknameSpan}>닉네임</span>
-              <ProfileInfoInput
-                name="nickname"
-                type="text"
-                placeholder="닉네임을 입력해주세요."
-                validation={{ required: '닉네임을 입력해주세요.' }}
-              />
-              <span className={styles.inroductionSpan}>한줄 소개</span>
-              <ProfileInfoInput
-                name="introduction"
-                type="text"
-                placeholder="한줄 소개를 입력해주세요."
-                validation={{ required: '한줄 소개를 입력해주세요.' }}
-              />
-            </div>
-            <div className={styles.myStackBox}>
-              <span className={styles.stackSpan}>
-                나의 스택목록
-                <div onClick={stackModalOpen}>
-                  <PlusIcon />
-                </div>
-              </span>
-              <ul className={styles.editStackList}>
-                {selectedStacks.length ? (
-                  selectedStacks.map((stack, index) => (
-                    <li
-                      key={index}
-                      className={styles.editStack}>
-                      {stack}
-                    </li>
-                  ))
-                ) : (
-                  <li className={styles.editStack}>스택 없음</li>
-                )}
-              </ul>
-              <div className={styles.experienceBox}>
-                <div>
-                  <span className={styles.contactInformationSpan}>
-                    컨택 가능 주소
-                  </span>
-                  <ul className={styles.editContactInformationList}>
+            <form onSubmit={methods.handleSubmit(handleFormSubmit)}>
+              <div className={styles.userBox}>
+                <span className={styles.nicknameSpan}>닉네임</span>
+                <ProfileInfoInput
+                  name="nickname"
+                  type="text"
+                  placeholder="닉네임을 입력해주세요."
+                  validation={{ required: '닉네임을 입력해주세요.' }}
+                />
+                <span className={styles.inroductionSpan}>한줄 소개</span>
+                <ProfileInfoInput
+                  name="introduction"
+                  type="text"
+                  placeholder="한줄 소개를 입력해주세요."
+                  validation={{ required: '한줄 소개를 입력해주세요.' }}
+                />
+              </div>
+              <div className={styles.myStackBox}>
+                <span className={styles.stackSpan}>
+                  나의 스택목록
+                  <div onClick={stackModalOpen}>
+                    <PlusIcon />
+                  </div>
+                </span>
+                <ul className={styles.editStackList}>
+                  {selectedStacks.length ? (
+                    selectedStacks.map((stack, index) => (
+                      <li
+                        key={index}
+                        className={styles.editStack}>
+                        {stack}
+                      </li>
+                    ))
+                  ) : (
+                    <li className={styles.editStack}>스택 없음</li>
+                  )}
+                </ul>
+                <div className={styles.experienceBox}>
+                  <div>
+                    <span className={styles.contactInformationSpan}>
+                      컨택 가능 주소
+                    </span>
+                    <ul className={styles.editContactInformationList}>
+                      <ProfileInfoInput
+                        name="contactInformation"
+                        type="text"
+                        placeholder="컨택 가능한 주소를 입력해주세요."
+                        validation={{
+                          required: '컨택 가능한 주소를 입력해주세요.'
+                        }}
+                      />
+                      <ProfileInfoInput
+                        name="contactInformation"
+                        type="text"
+                        placeholder="컨택 가능한 주소를 입력해주세요."
+                        validation={{
+                          required: '컨택 가능한 주소를 입력해주세요.'
+                        }}
+                      />
+                    </ul>
+                  </div>
+                  <div>
+                    <span className={styles.experienceSpan}>경력 (몇 년)</span>
                     <ProfileInfoInput
-                      name="contactInformation"
+                      name="experienceSpan"
                       type="text"
-                      placeholder="컨택 가능한 주소를 입력해주세요."
+                      placeholder="경력 (몇 년)를 입력해주세요."
                       validation={{
-                        required: '컨택 가능한 주소를 입력해주세요.'
+                        required: '경력 (몇 년)를 입력해주세요.'
                       }}
                     />
-                    <ProfileInfoInput
-                      name="contactInformation"
-                      type="text"
-                      placeholder="컨택 가능한 주소를 입력해주세요."
-                      validation={{
-                        required: '컨택 가능한 주소를 입력해주세요.'
-                      }}
-                    />
-                  </ul>
-                </div>
-                <div>
-                  <span className={styles.experienceSpan}>경력 (몇 년)</span>
-                  <ProfileInfoInput
-                    name="experienceSpan"
-                    type="text"
-                    placeholder="경력 (몇 년)를 입력해주세요."
-                    validation={{
-                      required: '경력 (몇 년)를 입력해주세요.'
-                    }}
-                  />
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </FormProvider>
         ) : (
           <>

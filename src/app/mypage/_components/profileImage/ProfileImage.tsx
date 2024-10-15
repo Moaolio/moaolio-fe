@@ -62,6 +62,7 @@ const ProfileImage = () => {
       setProfileData(response.data)
 
       clickEditProfile()
+      console.log('데이터 전송 완료')
     } catch (error) {
       console.error('프로필 업데이트 실패:', error)
     }

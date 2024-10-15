@@ -4,8 +4,10 @@ import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.sc
 import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import ProfileImageButton from '@/assets/icons/ProfileImageButton'
+import axios from 'axios'
 
 const ProfileImage = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const {
     mypageData: {
       editProfile,
@@ -34,9 +36,35 @@ const ProfileImage = () => {
       reader.readAsDataURL(file)
     }
   }
-
   const handleButtonClick = () => {
     fileInputRef.current?.click()
+  }
+
+  const handleSaveProfile = async () => {
+    try {
+      // 현재 상태 데이터를 가져오기
+      const { mypageData } = useMypagUpdateStore.getState()
+
+      // 서버로 보낼 데이터
+      const payload = {
+        profileImageStr: mypageData.profileImageStr,
+        positions: mypageData.positions,
+        nickname: mypageData.nickname,
+        experience: mypageData.experience,
+        stack: mypageData.stack,
+        contactInformation: mypageData.contactInformation,
+        introduction: mypageData.introduction
+      }
+
+      // 서버로 데이터 전송
+      const response = await axios.patch(`${apiUrl}/api/user/update`, payload)
+
+      setProfileData(response.data)
+
+      clickEditProfile()
+    } catch (error) {
+      console.error('프로필 업데이트 실패:', error)
+    }
   }
 
   return (
@@ -79,7 +107,7 @@ const ProfileImage = () => {
               </div>
               <button
                 className={styles.editComplete}
-                onClick={clickEditProfile}>
+                onClick={handleSaveProfile}>
                 수정 완료
               </button>
             </div>

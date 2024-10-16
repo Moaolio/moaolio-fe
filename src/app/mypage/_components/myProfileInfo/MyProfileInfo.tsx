@@ -1,11 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '@/app/mypage/_components/myProfileInfo/MyProfileInfo.module.scss'
 import ProfileInfoInput from '@/app/mypage/_components/ProfileInfoInput/ProfileInfoInput'
 import { FormProvider, useForm } from 'react-hook-form'
 import PlusIcon from '@/assets/icons/PlusIcon'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import StackModal from '../stackModal/StackModal'
+import axios from 'axios'
 interface FormValues {
   nickname: string
   introduction: string
@@ -14,6 +15,7 @@ interface FormValues {
 }
 
 const MyProfileInfo = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const {
     mypageData: {
       editProfile,
@@ -53,6 +55,28 @@ const MyProfileInfo = () => {
       stack: selectedStacks
     })
   }
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/user/`)
+        const data = response.data
+        setProfileData({
+          positions: data.positions,
+          nickname: data.nickname,
+          introduction: data.introduction,
+          stack: data.stack,
+          experience: data.experience,
+          contactInformation: data.contactInformation
+        })
+        setSelectedStacks(data.stack || [])
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchProfileData()
+  }, [apiUrl, setProfileData])
 
   return (
     <>

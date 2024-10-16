@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, ChangeEvent, useState } from 'react'
+import React, { useEffect, useRef, ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.scss'
 import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
@@ -39,6 +39,25 @@ const ProfileImage = () => {
   const handleButtonClick = () => {
     fileInputRef.current?.click()
   }
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/user/`)
+        const data = response.data
+        setProfileData({
+          profileImageStr: data.profileImageUrl,
+          positions: data.positions,
+          nickname: data.nickname,
+          experience: data.experience
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchProfileData()
+  }, [apiUrl, setProfileData])
 
   const handleSaveProfile = async () => {
     try {

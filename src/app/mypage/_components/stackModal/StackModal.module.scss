@@ -1,0 +1,99 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  .modalContainer {
+    width: 553px;
+    height: 630px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    .titleSpan {
+      color: #1c1c1c;
+      font-size: 25px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      margin-bottom: 20px;
+    }
+    .searchBox {
+    }
+    .stackBox {
+      width: 500px;
+      height: 470px;
+      border-radius: 10px;
+      border: 2px solid #60b7cd;
+      box-shadow: 0px 4px 20px 5px rgba(16, 207, 255, 0.06);
+      padding: 10px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .selectedStack {
+        display: flex;
+        align-items: center;
+        width: 470px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid #417a88;
+        padding-left: 5px;
+        margin-bottom: 5px;
+      }
+      .stacks {
+        display: inline-block;
+        height: 25px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        border: 1px solid #dbdbdb;
+        background: #fff;
+        color: #686868;
+        text-align: center;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 3px 5px;
+        list-style-type: none;
+        margin-right: 5px;
+      }
+      .stackList {
+        display: flex;
+        width: 470px;
+        height: 100%;
+        border-radius: 5px;
+        border: 2px solid #417a88;
+        padding: 5px;
+      }
+    }
+
+    .completeButton {
+      margin-top: 10px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 140px;
+      height: 45px;
+      flex-shrink: 0;
+      border-radius: 7px;
+      background: #60b7cd;
+      color: #fff;
+      font-size: 17px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}

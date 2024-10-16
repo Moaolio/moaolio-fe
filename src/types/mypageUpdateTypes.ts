@@ -1,4 +1,14 @@
 export interface ProfileState {
-  editProfile: boolean
+  mypageData: {
+    editProfile: boolean
+    positions: string
+    nickname: string
+    introduction: string
+    stack: string[]
+    experience: string
+    contactInformation: string[]
+    profileImageStr: string
+  }
   clickEditProfile: () => void
+  setProfileData: (data: Partial<ProfileState['mypageData']>) => void
 }

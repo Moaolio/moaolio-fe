@@ -59,7 +59,7 @@ const MyProfileInfo = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/api/user/`)
+        const response = await axios.get(`${apiUrl}/api/user/my`)
         const data = response.data
         setProfileData({
           positions: data.positions,
@@ -127,39 +127,45 @@ const MyProfileInfo = () => {
                   )}
                 </ul>
                 <div className={styles.experienceBox}>
-                  <div>
+                  <div className={styles.contactInformationContainer}>
                     <span className={styles.contactInformationSpan}>
                       컨택 가능 주소
                     </span>
-                    <ul className={styles.editContactInformationList}>
+                    <ul className={styles.editContactInformationUl}>
+                      <li className={styles.editContactInformationList}>
+                        <ProfileInfoInput
+                          name="contactInformation"
+                          type="text"
+                          placeholder="컨택 가능한 주소를 입력해주세요."
+                          validation={{
+                            required: '컨택 가능한 주소를 입력해주세요.'
+                          }}
+                        />
+                      </li>
+                      <li className={styles.editContactInformationList}>
+                        <ProfileInfoInput
+                          name="contactInformation"
+                          type="text"
+                          placeholder="컨택 가능한 주소를 입력해주세요."
+                          validation={{
+                            required: '컨택 가능한 주소를 입력해주세요.'
+                          }}
+                        />
+                      </li>
+                    </ul>
+                  </div>
+                  <div className={styles.experienceContainer}>
+                    <span className={styles.experienceSpan}>경력 (몇 년)</span>
+                    <ul className={styles.editExperienceList}>
                       <ProfileInfoInput
-                        name="contactInformation"
+                        name="experienceSpan"
                         type="text"
-                        placeholder="컨택 가능한 주소를 입력해주세요."
+                        placeholder="경력 (몇 년)를 입력해주세요."
                         validation={{
-                          required: '컨택 가능한 주소를 입력해주세요.'
-                        }}
-                      />
-                      <ProfileInfoInput
-                        name="contactInformation"
-                        type="text"
-                        placeholder="컨택 가능한 주소를 입력해주세요."
-                        validation={{
-                          required: '컨택 가능한 주소를 입력해주세요.'
+                          required: '경력 (몇 년)를 입력해주세요.'
                         }}
                       />
                     </ul>
-                  </div>
-                  <div>
-                    <span className={styles.experienceSpan}>경력 (몇 년)</span>
-                    <ProfileInfoInput
-                      name="experienceSpan"
-                      type="text"
-                      placeholder="경력 (몇 년)를 입력해주세요."
-                      validation={{
-                        required: '경력 (몇 년)를 입력해주세요.'
-                      }}
-                    />
                   </div>
                 </div>
               </div>

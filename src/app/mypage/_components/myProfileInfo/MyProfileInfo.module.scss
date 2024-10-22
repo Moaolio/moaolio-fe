@@ -34,6 +34,12 @@
     .stackSpan {
       display: flex;
       margin-bottom: 14px;
+      color: #1c1c1c;
+      font-family: Pretendard;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
     }
     .editStackList {
       display: flex;
@@ -56,10 +62,43 @@
         align-items: center;
         padding-left: 24px;
         margin-right: 12px;
+        margin-bottom: 56px;
       }
     }
     .experienceBox {
       display: flex;
+
+      .contactInformationContainer {
+        margin-right: 11px;
+        .contactInformationSpan {
+          color: #1c1c1c;
+          font-family: Pretendard;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+        .editContactInformationUl {
+          margin-top: 12px;
+          .editContactInformationList {
+            list-style-type: none;
+            margin-bottom: 12px;
+          }
+        }
+      }
+      .experienceContainer {
+        .experienceSpan {
+          color: #1c1c1c;
+          font-family: Pretendard;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+        .editExperienceList {
+          margin-top: 12px;
+        }
+      }
     }
   }
   .profileUser {

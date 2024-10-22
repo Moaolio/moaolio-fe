@@ -43,7 +43,7 @@ const ProfileImage = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get(`${apiUrl}/api/user/`)
+        const response = await axios.get(`${apiUrl}/api/user/my`)
         const data = response.data
         setProfileData({
           profileImageStr: data.profileImageUrl,

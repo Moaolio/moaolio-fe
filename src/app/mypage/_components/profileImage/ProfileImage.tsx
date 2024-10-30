@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 import ProfileImageButton from '@/assets/icons/ProfileImageButton'
 import axios from 'axios'
+import Link from 'next/link'
 
 const ProfileImage = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
@@ -141,11 +142,21 @@ const ProfileImage = () => {
               <span className={styles.positionExperience}>
                 {positions || '포지션 없음'} | {experience || '경력 없음'}
               </span>
-              <button className={styles.myButton}>나의 프로필</button>
-              <button className={styles.myButton}>나의 포트폴리오</button>
-              <button className={styles.myButton}>스크랩한 포트폴리오</button>
-              <button className={styles.myButton}>내가 작성한 글</button>
-              <button className={styles.myButton}>내가 작성한 댓글</button>
+              <Link href="/mypage?section=profile">
+                <button className={styles.myButton}>나의 프로필</button>
+              </Link>
+              <Link href="/mypage?section=portfolio">
+                <button className={styles.myButton}>나의 포트폴리오</button>
+              </Link>
+              <Link href="/mypage?section=scrap">
+                <button className={styles.myButton}>스크랩한 포트폴리오</button>
+              </Link>
+              <Link href="/mypage?section=posts">
+                <button className={styles.myButton}>내가 작성한 글</button>
+              </Link>
+              <Link href="/mypage?section=comments">
+                <button className={styles.myButton}>내가 작성한 댓글</button>
+              </Link>
               <div className={styles.editBox}>
                 <button
                   className={styles.editButton}

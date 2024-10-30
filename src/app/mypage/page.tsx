@@ -1,11 +1,10 @@
 import React from 'react'
 import styles from '@/app/mypage/page.module.scss'
 import ProfileImage from './_components/profileImage/ProfileImage'
-import MyProfileInfo from '@/app/mypage/_components/myProfileInfo/MyProfileInfo'
 import MyPageArrow from '@/assets/icons/MypageArrow'
 import Header from '@/components/Header/Header'
 import BackgroundImage from '@/app/mypage/_components/BackgroundImage'
-
+import ComponentsRendering from './_components/componentsRendering/ComponentsRendering'
 const Page = () => {
   return (
     <>
@@ -15,7 +14,7 @@ const Page = () => {
         <MyPageArrow />
         <div className={styles.pageComponants}>
           <ProfileImage />
-          <MyProfileInfo />
+          <ComponentsRendering />
         </div>
       </div>
     </>

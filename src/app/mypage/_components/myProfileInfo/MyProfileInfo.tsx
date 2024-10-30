@@ -84,6 +84,7 @@ const MyProfileInfo = () => {
         <StackModal
           stackModalClose={stackModalClose}
           handleStackSelected={handleStackSelected}
+          initialSelectedStacks={selectedStacks}
         />
       )}
       <div className={styles.profileInfoContainer}>

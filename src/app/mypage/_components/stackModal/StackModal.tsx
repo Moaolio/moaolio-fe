@@ -4,16 +4,20 @@ import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 interface StackModalProps {
   stackModalClose: () => void
   handleStackSelected: (stack: string[]) => void
+  initialSelectedStacks: string[]
 }
 
 const StackModal: React.FC<StackModalProps> = ({
   stackModalClose,
-  handleStackSelected
+  handleStackSelected,
+  initialSelectedStacks
 }) => {
   const {
     mypageData: { stack }
   } = useMypagUpdateStore()
-  const [selectedStacks, setSelectedStacks] = useState<string[]>([])
+  const [selectedStacks, setSelectedStacks] = useState<string[]>(
+    initialSelectedStacks || []
+  )
   const [stacks] = useState<string[]>([
     'HTML',
     'CSS',

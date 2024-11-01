@@ -3,6 +3,7 @@ import React, { useEffect, useRef, ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.scss'
 import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
+import { useMypageSidebarStore } from '@/store/useMypageSidebarStore'
 import ProfileImageButton from '@/assets/icons/ProfileImageButton'
 import axios from 'axios'
 import Link from 'next/link'
@@ -20,6 +21,7 @@ const ProfileImage = () => {
     clickEditProfile,
     setProfileData
   } = useMypagUpdateStore()
+  const { sidebarList, setCurrentSection } = useMypageSidebarStore()
   const [preview, setPreview] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -142,21 +144,14 @@ const ProfileImage = () => {
               <span className={styles.positionExperience}>
                 {positions || '포지션 없음'} | {experience || '경력 없음'}
               </span>
-              <Link href="/mypage?section=profile">
-                <button className={styles.myButton}>나의 프로필</button>
-              </Link>
-              <Link href="/mypage?section=portfolio">
-                <button className={styles.myButton}>나의 포트폴리오</button>
-              </Link>
-              <Link href="/mypage?section=scrap">
-                <button className={styles.myButton}>스크랩한 포트폴리오</button>
-              </Link>
-              <Link href="/mypage?section=posts">
-                <button className={styles.myButton}>내가 작성한 글</button>
-              </Link>
-              <Link href="/mypage?section=comments">
-                <button className={styles.myButton}>내가 작성한 댓글</button>
-              </Link>
+              {sidebarList.map(item => (
+                <button
+                  key={item.section}
+                  className={styles.myButton}
+                  onClick={() => setCurrentSection(item.section)}>
+                  {item.label}
+                </button>
+              ))}
               <div className={styles.editBox}>
                 <button
                   className={styles.editButton}

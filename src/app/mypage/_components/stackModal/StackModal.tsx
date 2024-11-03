@@ -1,16 +1,23 @@
 import React, { useState } from 'react'
 import styles from '@/app/mypage/_components/stackModal/StackModal.module.scss'
-
+import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
 interface StackModalProps {
   stackModalClose: () => void
   handleStackSelected: (stack: string[]) => void
+  initialSelectedStacks: string[]
 }
 
 const StackModal: React.FC<StackModalProps> = ({
   stackModalClose,
-  handleStackSelected
+  handleStackSelected,
+  initialSelectedStacks
 }) => {
-  const [selectedStacks, setSelectedStacks] = useState<string[]>([])
+  const {
+    mypageData: { stack }
+  } = useMypagUpdateStore()
+  const [selectedStacks, setSelectedStacks] = useState<string[]>(
+    initialSelectedStacks || []
+  )
   const [stacks] = useState<string[]>([
     'HTML',
     'CSS',

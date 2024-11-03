@@ -1,11 +1,15 @@
 'use client'
-import React, { useRef, ChangeEvent, useState } from 'react'
+import React, { useEffect, useRef, ChangeEvent, useState } from 'react'
 import styles from '@/app/mypage/_components/profileImage/ProfileImage.module.scss'
 import Image from 'next/image'
 import { useMypagUpdateStore } from '@/store/useMypageUpdateStore'
+import { useMypageSidebarStore } from '@/store/useMypageSidebarStore'
 import ProfileImageButton from '@/assets/icons/ProfileImageButton'
+import axios from 'axios'
+import Link from 'next/link'
 
 const ProfileImage = () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const {
     mypageData: {
       editProfile,
@@ -17,6 +21,7 @@ const ProfileImage = () => {
     clickEditProfile,
     setProfileData
   } = useMypagUpdateStore()
+  const { sidebarList, setCurrentSection } = useMypageSidebarStore()
   const [preview, setPreview] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -34,9 +39,55 @@ const ProfileImage = () => {
       reader.readAsDataURL(file)
     }
   }
-
   const handleButtonClick = () => {
     fileInputRef.current?.click()
+  }
+
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/api/user/my`)
+        const data = response.data
+        setProfileData({
+          profileImageStr: data.profileImageUrl,
+          positions: data.positions,
+          nickname: data.nickname,
+          experience: data.experience
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchProfileData()
+  }, [apiUrl, setProfileData])
+
+  const handleSaveProfile = async () => {
+    try {
+      // 현재 상태 데이터를 가져오기
+      const { mypageData } = useMypagUpdateStore.getState()
+
+      // 서버로 보낼 데이터
+      const payload = {
+        profileImageStr: mypageData.profileImageStr,
+        positions: mypageData.positions,
+        nickname: mypageData.nickname,
+        experience: mypageData.experience,
+        stack: mypageData.stack,
+        contactInformation: mypageData.contactInformation,
+        introduction: mypageData.introduction
+      }
+
+      // 서버로 데이터 전송
+      const response = await axios.patch(`${apiUrl}/api/user/update`, payload)
+
+      setProfileData(response.data)
+
+      clickEditProfile()
+      console.log('데이터 전송 완료')
+    } catch (error) {
+      console.error('프로필 업데이트 실패:', error)
+    }
   }
 
   return (
@@ -79,7 +130,7 @@ const ProfileImage = () => {
               </div>
               <button
                 className={styles.editComplete}
-                onClick={clickEditProfile}>
+                onClick={handleSaveProfile}>
                 수정 완료
               </button>
             </div>
@@ -93,11 +144,14 @@ const ProfileImage = () => {
               <span className={styles.positionExperience}>
                 {positions || '포지션 없음'} | {experience || '경력 없음'}
               </span>
-              <button className={styles.myButton}>나의 프로필</button>
-              <button className={styles.myButton}>나의 포트폴리오</button>
-              <button className={styles.myButton}>스크랩한 포트폴리오</button>
-              <button className={styles.myButton}>내가 작성한 글</button>
-              <button className={styles.myButton}>내가 작성한 댓글</button>
+              {sidebarList.map(item => (
+                <button
+                  key={item.section}
+                  className={styles.myButton}
+                  onClick={() => setCurrentSection(item.section)}>
+                  {item.label}
+                </button>
+              ))}
               <div className={styles.editBox}>
                 <button
                   className={styles.editButton}

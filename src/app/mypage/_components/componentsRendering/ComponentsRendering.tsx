@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import MyPortfolios from '../myPortfolios/myPortfolios'
 import MyProfileInfo from '../myProfileInfo/MyProfileInfo'
@@ -12,7 +13,7 @@ const ComponentsRendering = () => {
   const renderComponent = () => {
     switch (currentSection) {
       case 'portfolio':
-        return <MyPortfolios />
+        return <MyPortfolios /> //미완성
       case 'scrap':
         return <MyScrapPortfolios /> //미완성
       case 'posts':
@@ -21,7 +22,7 @@ const ComponentsRendering = () => {
         return <MyComments /> //미완성
       case 'profile':
       default:
-        return <MyProfileInfo /> //미완성
+        return <MyProfileInfo />
     }
   }
 

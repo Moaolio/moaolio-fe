@@ -1,15 +1,20 @@
 'use cient'
 import styles from '@/app/components/portfolio/Portfolio.module.scss'
 import React from 'react'
+interface PortfolioTypes {
+  position: string
+  title: string
+  name: string
+}
 
-const Portfolio = () => {
+const Portfolio = ({ position, title, name }: PortfolioTypes) => {
   return (
     <div>
       <div className={styles.portfolioBox}>
         <div className={styles.title}>
-          <span className={styles.positionsSpan}>백엔드</span>
-          <span className={styles.portfolioTitle}>웹 개발자 포트폴리오</span>
-          <span className={styles.userName}>이름</span>
+          <span className={styles.positionsSpan}>{position}</span>
+          <span className={styles.portfolioTitle}>{title}</span>
+          <span className={styles.userName}>{name}</span>
         </div>
       </div>
     </div>

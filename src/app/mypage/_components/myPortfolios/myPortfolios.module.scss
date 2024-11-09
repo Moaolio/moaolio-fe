@@ -6,4 +6,26 @@
   padding-top: 94px;
   display: flex;
   z-index: 2;
+  flex-direction: column;
+  .titleBox {
+    margin-bottom: 59px;
+    .portfolioTitle {
+      color: #1c1c1c;
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 27px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      margin-right: 12px;
+    }
+    .portfolioCount {
+      color: #818181;
+      font-family: Pretendard;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
 }

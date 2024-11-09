@@ -1,5 +1,5 @@
 .profileInfoContainer {
-  width: 619x;
+  width: 680px;
   height: 676px;
   margin-left: 86px;
   display: flex;
@@ -27,5 +27,11 @@
       font-weight: 400;
       line-height: normal;
     }
+  }
+  .portfolioBox {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    gap: 22.42px;
   }
 }

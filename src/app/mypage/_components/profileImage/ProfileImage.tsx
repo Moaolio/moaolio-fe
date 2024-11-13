@@ -21,7 +21,8 @@ const ProfileImage = () => {
     clickEditProfile,
     setProfileData
   } = useMypagUpdateStore()
-  const { sidebarList, setCurrentSection } = useMypageSidebarStore()
+  const { sidebarList, currentSection, setCurrentSection } =
+    useMypageSidebarStore()
   const [preview, setPreview] = useState<string | null>(null)
 
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -147,7 +148,7 @@ const ProfileImage = () => {
               {sidebarList.map(item => (
                 <button
                   key={item.section}
-                  className={styles.myButton}
+                  className={`${styles.myButton} ${currentSection === item.section ? styles.selectedButton : ''}`}
                   onClick={() => setCurrentSection(item.section)}>
                   {item.label}
                 </button>

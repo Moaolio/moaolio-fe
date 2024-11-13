@@ -127,6 +127,9 @@
         background: none;
         border: none;
         cursor: pointer;
+        &.selectedButton {
+          color: #57a4bc;
+        }
       }
     }
   }

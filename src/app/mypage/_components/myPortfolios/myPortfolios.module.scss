@@ -7,6 +7,7 @@
   display: flex;
   z-index: 2;
   flex-direction: column;
+
   .titleBox {
     margin-bottom: 59px;
     .portfolioTitle {
@@ -33,5 +34,6 @@
     flex-wrap: wrap;
     width: auto;
     gap: 22.42px;
+    overflow-y: auto;
   }
 }

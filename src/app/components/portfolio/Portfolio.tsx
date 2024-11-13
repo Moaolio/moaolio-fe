@@ -14,7 +14,7 @@ const Portfolio = ({ position, title, name }: PortfolioTypes) => {
         <div className={styles.title}>
           <span className={styles.positionsSpan}>{position}</span>
           <span className={styles.portfolioTitle}>{title}</span>
-          <span className={styles.userName}>{name}</span>
+          <span className={styles.userName}>작성자 : {name}</span>
         </div>
       </div>
     </div>

@@ -1,0 +1,23 @@
+.mainContainer {
+  .spanBox {
+    .titleSpan {
+    }
+    .explainSpan {
+    }
+  }
+  .buttonBox {
+    //비트윈 사용
+    .filterBox {
+      .latestButton {
+      }
+      .popularButton {
+      }
+    }
+    .writeButton {
+    }
+  }
+
+  .portfolioList {
+    gap: 45px;
+  }
+}

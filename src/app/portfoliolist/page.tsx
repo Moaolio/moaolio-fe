@@ -6,6 +6,7 @@ import Header from '@/components/Header/Header'
 import Pagination from '@/components/Pagination/Pagination'
 import axios from 'axios'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 interface PortfolioData {
   id: string
   position: string
@@ -54,7 +55,6 @@ const Page = () => {
   ]
   const POSTS_PER_PAGE = 8
   const totalPages = Math.ceil(portfolioData.length / POSTS_PER_PAGE)
-  // 페이지 전환 시 데이터 초기화
   const currentData = portfolioData.slice(
     (currentPage - 1) * POSTS_PER_PAGE,
     currentPage * POSTS_PER_PAGE
@@ -75,7 +75,9 @@ const Page = () => {
             <button className={styles.latestButton}>최신순</button>
             <button className={styles.popularButton}>인기순</button>
           </div>
-          <button className={styles.writeButton}>작성하기</button>
+          <Link href="/community/newpost">
+            <button className={styles.writeButton}>작성하기</button>
+          </Link>
         </div>
         <div className={styles.portfolioList}>
           {currentData.map(portfolio => (

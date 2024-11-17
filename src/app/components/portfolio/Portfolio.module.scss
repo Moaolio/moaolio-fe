@@ -1,7 +1,9 @@
 .portfolioBox {
+  outline: 1px solid red;
   width: 203.576px;
   height: 205px;
   border-radius: 10.677px;
+  box-sizing: border-box;
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.4) 0%,

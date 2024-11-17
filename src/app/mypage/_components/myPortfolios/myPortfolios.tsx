@@ -37,14 +37,15 @@ const MyPortfolios = () => {
     { id: '2', position: 'Backend', title: 'Portfolio 2', name: 'bbb' },
     { id: '3', position: 'Designer', title: 'Portfolio 3', name: 'ccc' },
     { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' }
+    { id: '5', position: 'DS', title: 'Portfolio 5', name: 'ddd' },
+    { id: '6', position: 'DS', title: 'Portfolio 6', name: 'ddd' },
+    { id: '7', position: 'DS', title: 'Portfolio 7', name: 'ddd' },
+    { id: '8', position: 'DS', title: 'Portfolio 8', name: 'ddd' },
+    { id: '9', position: 'DS', title: 'Portfolio 9', name: 'ddd' },
+    { id: '10', position: 'DS', title: 'Portfolio 10', name: 'ddd' },
+    { id: '11', position: 'DS', title: 'Portfolio 11', name: 'ddd' },
+    { id: '12', position: 'DS', title: 'Portfolio 12', name: 'ddd' },
+    { id: '13', position: 'DS', title: 'Portfolio 13', name: 'ddd' }
   ]
   return (
     <>

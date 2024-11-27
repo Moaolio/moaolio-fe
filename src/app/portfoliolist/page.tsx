@@ -12,12 +12,15 @@ interface PortfolioData {
   position: string
   title: string
   name: string
+  date: string
 }
 
 const Page = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   const searchParams = useSearchParams()
   const currentPage = Number(searchParams.get('page')) || 1 // URL에서 현재 페이지 가져오기
+  const [filter, setFilter] = useState<'latest' | 'popular'>('latest')
+
   // const [portfolioData, setPortfolioData] = useState<PortfolioData[]>([])
 
   // const fetchPortfolios = async () => {
@@ -38,21 +41,103 @@ const Page = () => {
       id: '1',
       position: 'Frontend',
       title: 'Portfolio 1',
-      name: 'aaa'
+      name: 'aaa',
+      date: '2024-11-08'
     },
-    { id: '2', position: 'Backend', title: 'Portfolio 2', name: 'bbb' },
-    { id: '3', position: 'Designer', title: 'Portfolio 3', name: 'ccc' },
-    { id: '4', position: 'DS', title: 'Portfolio 4', name: 'ddd' },
-    { id: '5', position: 'DS', title: 'Portfolio 5', name: 'ddd' },
-    { id: '6', position: 'DS', title: 'Portfolio 6', name: 'ddd' },
-    { id: '7', position: 'DS', title: 'Portfolio 7', name: 'ddd' },
-    { id: '8', position: 'DS', title: 'Portfolio 8', name: 'ddd' },
-    { id: '9', position: 'DS', title: 'Portfolio 9', name: 'ddd' },
-    { id: '10', position: 'DS', title: 'Portfolio 10', name: 'ddd' },
-    { id: '11', position: 'DS', title: 'Portfolio 11', name: 'ddd' },
-    { id: '12', position: 'DS', title: 'Portfolio 12', name: 'ddd' },
-    { id: '13', position: 'DS', title: 'Portfolio 13', name: 'ddd' }
+    {
+      id: '2',
+      position: 'Backend',
+      title: 'Portfolio 2',
+      name: 'bbb',
+      date: '2024-11-12'
+    },
+    {
+      id: '3',
+      position: 'Designer',
+      title: 'Portfolio 3',
+      name: 'ccc',
+      date: '2024-11-11'
+    },
+    {
+      id: '4',
+      position: 'DS',
+      title: 'Portfolio 4',
+      name: 'ddd',
+      date: '2024-11-10'
+    },
+    {
+      id: '5',
+      position: 'DS',
+      title: 'Portfolio 5',
+      name: 'ddd',
+      date: '2024-11-09'
+    },
+    {
+      id: '6',
+      position: 'DS',
+      title: 'Portfolio 6',
+      name: 'ddd',
+      date: '2024-11-08'
+    },
+    {
+      id: '7',
+      position: 'DS',
+      title: 'Portfolio 7',
+      name: 'ddd',
+      date: '2024-11-07'
+    },
+    {
+      id: '8',
+      position: 'DS',
+      title: 'Portfolio 8',
+      name: 'ddd',
+      date: '2024-11-06'
+    },
+    {
+      id: '9',
+      position: 'DS',
+      title: 'Portfolio 9',
+      name: 'ddd',
+      date: '2024-11-05'
+    },
+    {
+      id: '10',
+      position: 'DS',
+      title: 'Portfolio 10',
+      name: 'ddd',
+      date: '2024-11-04'
+    },
+    {
+      id: '11',
+      position: 'DS',
+      title: 'Portfolio 11',
+      name: 'ddd',
+      date: '2024-11-03'
+    },
+    {
+      id: '12',
+      position: 'DS',
+      title: 'Portfolio 12',
+      name: 'ddd',
+      date: '2024-11-02'
+    },
+    {
+      id: '13',
+      position: 'DS',
+      title: 'Portfolio 13',
+      name: 'ddd',
+      date: '2024-11-01'
+    }
   ]
+
+  //인기순은 좋아요 기능 만든후 구현예정
+  const sortedData = portfolioData.sort((a, b) => {
+    if (filter === 'latest') {
+      return new Date(b.date).getTime() - new Date(a.date).getTime()
+    }
+    return 0
+  })
+
   const POSTS_PER_PAGE = 8
   const totalPages = Math.ceil(portfolioData.length / POSTS_PER_PAGE)
   const currentData = portfolioData.slice(
@@ -72,8 +157,16 @@ const Page = () => {
         </div>
         <div className={styles.buttonBox}>
           <div className={styles.filterBox}>
-            <button className={styles.latestButton}>최신순</button>
-            <button className={styles.popularButton}>인기순</button>
+            <button
+              className={`${styles.latestButton}  ${filter === 'latest' ? styles.active : ''}`}
+              onClick={() => setFilter('latest')}>
+              최신순
+            </button>
+            <button
+              className={`${styles.popularButton} ${filter === 'popular' ? styles.active : ''}`}
+              onClick={() => setFilter('popular')}>
+              인기순
+            </button>
           </div>
           <Link href="/community/newpost">
             <button className={styles.writeButton}>작성하기</button>

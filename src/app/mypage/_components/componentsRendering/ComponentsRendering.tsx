@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import MyPortfolios from '../myPortfolios/myPortfolios'
+import MyPortfolios from '../myPortfolios/MyPortfolios'
 import MyProfileInfo from '../myProfileInfo/MyProfileInfo'
 import MyScrapPortfolios from '../myScrapPortfolios/MyScrapPortfolios'
 import MyPosts from '../myPosts/MyPosts'
@@ -13,7 +13,7 @@ const ComponentsRendering = () => {
   const renderComponent = () => {
     switch (currentSection) {
       case 'portfolio':
-        return <MyPortfolios /> //미완성
+        return <MyPortfolios />
       case 'scrap':
         return <MyScrapPortfolios /> //미완성
       case 'posts':

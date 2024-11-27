@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import styles from '@/app/mypage/_components/myPortfolios/myPortfolios.module.scss'
+import styles from '@/app/mypage/_components/myPortfolios/MyPortfolios.module.scss'
 import Portfolio from '@/app/components/portfolio/Portfolio'
 import axios from 'axios'
 interface PortfolioData {
